@@ -24,4 +24,9 @@ public class BulletBehaviour : MonoBehaviour
     {
         direction = dir;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(this.gameObject);
+    }
 }

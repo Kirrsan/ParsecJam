@@ -16,12 +16,15 @@ public class TopDownEntity : MonoBehaviour
 
     private Vector2 _dashDir;
     [SerializeField] private float _dashDuration = 0.3f;
+    [SerializeField] private float _dashCooldown = 3f;
     [SerializeField] private float _dashspeed = 20f;
     [SerializeField] private float _dashCountdown = -1f;
     private bool _isDashing = false;
+    private float _dashTimer;
 
     [SerializeField] private GameObject _visualObj;
-    public Shoot shootFunc;
+    [HideInInspector] public Shoot shootFunc;
+    public bool dashToAim = true;
 
     private void Awake()
     {
@@ -36,9 +39,36 @@ public class TopDownEntity : MonoBehaviour
 
     public void Dash()
     {
-        _dashDir = _orientDir;
-        _dashCountdown = _dashDuration;
-        _isDashing = true;
+        if (_dashTimer <= 0)
+        {
+            if (dashToAim)
+            {
+                if (_orientDir == Vector2.zero)
+                {
+                    _dashDir = Vector2.right;
+                }
+                else
+                {
+                    _dashDir = _orientDir;
+                }
+            }
+            else
+            {
+                _dashDir = _velocity.normalized;
+            }
+            _dashCountdown = _dashDuration;
+            _isDashing = true;
+
+            _dashTimer = _dashCooldown;
+        }
+    }
+
+    private void Update()
+    {
+        if(_dashTimer > 0)
+        {
+            _dashTimer -= Time.deltaTime;
+        }
     }
 
     // Update is called once per frame
@@ -118,6 +148,7 @@ public class TopDownEntity : MonoBehaviour
             _velocity -= frictionDir * turnfrictionWithRatio * Time.fixedDeltaTime;
 
             //_orientDir = _velocity.normalized;
+            
         }
         else if (_velocity!= Vector2.zero)
         {

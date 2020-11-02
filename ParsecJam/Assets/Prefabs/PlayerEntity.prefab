@@ -193,10 +193,12 @@ MonoBehaviour:
   _friction: 30
   _turnFriction: 30
   _dashDuration: 0.3
+  _dashCooldown: 3
   _dashspeed: 20
   _dashCountdown: -1
   _visualObj: {fileID: 1003002237701627850}
   shootFunc: {fileID: 0}
+  dashToAim: 1
 --- !u!114 &1003002239153566689
 MonoBehaviour:
   m_ObjectHideFlags: 0

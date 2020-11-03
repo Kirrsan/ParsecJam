@@ -72,4 +72,18 @@ public class LevelManager : MonoBehaviour
     {
         return _levelDesigns[currentLevelDesign];
     }
+
+    public void RespawnPlayers()
+    {
+        Respawn respawn;
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            respawn = players[i].GetComponent<Respawn>();
+            respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
+
+            players[i].ChangeLife(players[i].GetLifeMax());
+            InterfaceManager.instance.AdjustLifeBar(i, 1);
+        }
+    }
 }

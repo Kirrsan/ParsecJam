@@ -2017,7 +2017,10 @@ MonoBehaviour:
   _timerText: {fileID: 3463157010706644396}
   _dashCoolDown:
   - {fileID: 6352885937581533705}
-  _healthBar: []
+  - {fileID: 3771048312866254922}
+  _healthBar:
+  - {fileID: 7556469703655349487}
+  - {fileID: 5930567031393829355}
 --- !u!114 &5873133323641448085
 MonoBehaviour:
   m_ObjectHideFlags: 0

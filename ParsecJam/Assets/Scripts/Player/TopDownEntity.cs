@@ -7,6 +7,7 @@ public class TopDownEntity : MonoBehaviour
 
     private int _index = 0;
 
+    [Header("Movement Settings")]
     [SerializeField] private float _acceleration = 20f;
     [SerializeField] private float _moveSpeedMax = 10f;
     [SerializeField] private float _friction = 30f;
@@ -16,6 +17,7 @@ public class TopDownEntity : MonoBehaviour
     private Vector2 _orientDir = Vector2.right;
     private Vector2 _velocity = Vector2.zero;
 
+    [Header("Dash Settings")]
     private Vector2 _dashDir;
     [SerializeField] private float _dashDuration = 0.3f;
     [SerializeField] private float _dashCooldown = 3f;
@@ -28,21 +30,26 @@ public class TopDownEntity : MonoBehaviour
 
     [SerializeField] private GameObject _visualObj;
     [HideInInspector] public Shoot shootFunc;
-    
+
+    [Header("Death Settings")]
     [SerializeField] private float _playerDeathTime = 30f;
     [SerializeField] private bool _isDead = false;
 
+    [Header("Life Settings")]
     [SerializeField] private float _lifeMax = 15;
     private float _life;
 
 
-    
-    public PowerEnum.Power currentPower;
+    [Header("Power Settings")]
+    [HideInInspector] public PlayerPowerBehaviour powerBehaviour;
+    private bool _canPickUpSomething = false;
+    private PickUpPower _pickUp;
 
 
     private void Awake()
     {
         shootFunc = GetComponent<Shoot>();
+        powerBehaviour = GetComponent<PlayerPowerBehaviour>();
     }
 
     // Start is called before the first frame update
@@ -106,6 +113,31 @@ public class TopDownEntity : MonoBehaviour
             newPosition.z += _velocity.y * Time.fixedDeltaTime;
             transform.position = newPosition;
         }
+    }
+
+    public void Pickup()
+    {
+        if (_isPlaying)
+        {
+            if (_canPickUpSomething)
+            {
+                _canPickUpSomething = false;
+                powerBehaviour.SetPower(_pickUp.GivePower());
+                Destroy(_pickUp.gameObject);
+                _pickUp = null;
+            }
+        }
+    }
+
+    public void SetPickable(PickUpPower pickable)
+    {
+        if(powerBehaviour.GetPower() != Power.None)
+        {
+            return;
+        }
+        
+        _canPickUpSomething = true;
+        _pickUp = pickable;
     }
 
     #region Dash
@@ -202,10 +234,20 @@ public class TopDownEntity : MonoBehaviour
     public void ChangeLife(float lifeToLoose)
     {
         _life += lifeToLoose;
-        if(_life <= 0)
+        InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
+        if (_life <= 0)
         {
             _isDead = true;
+            LevelManager.instance.RespawnPlayers();
+            ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
         }
+    }
+
+    public void Kill(int ennemyIndex)
+    {
+        _isDead = true;
+        LevelManager.instance.RespawnPlayers();
+        ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
     }
 
     public float GetLife()

@@ -31,14 +31,6 @@ public class BulletBehaviour : MonoBehaviour
         {
             TopDownEntity otherPlayer = other.GetComponentInParent<TopDownEntity>();
             otherPlayer.ChangeLife(-1);
-            InterfaceManager.instance.AdjustLifeBar(otherPlayer.GetIndex(), otherPlayer.GetLife() * (1/otherPlayer.GetLifeMax()));
-
-            if (otherPlayer.GetIsDead())
-            {
-                LevelManager.instance.RespawnPlayers();
-
-                ScoreManager.instance.AddToScore(_playerIndex);
-            }
         }
         Destroy(this.gameObject);
     }

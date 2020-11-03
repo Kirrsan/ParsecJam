@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 7585126218785870253}
   - component: {fileID: 47885646044706476}
   m_Layer: 5
-  m_Name: Quit
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,7 +845,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Quit
+  m_Text: Menu
 --- !u!1 &4792021902182596989
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +2011,6 @@ MonoBehaviour:
   _gamePanel: {fileID: 8686590040468578915}
   _pausePanel: {fileID: 8686590040254711624}
   _winPanel: {fileID: 8686590040559019667}
-  _eventSystem: {fileID: 6736007497721280725}
   _winnerText: {fileID: 2816168756847045011}
   _firstSelectedWinButton: {fileID: 8686590041352383074}
   _firstSelectedPauseButton: {fileID: 8686590040078391015}

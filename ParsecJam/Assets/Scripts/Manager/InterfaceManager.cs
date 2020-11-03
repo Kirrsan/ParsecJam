@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using System.Collections;
-using System.Runtime.InteropServices.ComTypes;
 
 public class InterfaceManager : MonoBehaviour
 {
@@ -13,8 +10,6 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _winPanel;
-
-    [SerializeField] private EventSystem _eventSystem;
 
     [Header("WinPanel")]
     [SerializeField] private Text _winnerText;

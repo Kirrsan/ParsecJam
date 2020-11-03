@@ -9,10 +9,12 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private float _roundDuration = 60;
     public float roundTimer = 0;
-    [HideInInspector] public TopDownEntity[] players = new TopDownEntity[2];
+    public TopDownEntity[] players = new TopDownEntity[2];
     
     [SerializeField] private LevelDesign[] _levelDesigns;
     [SerializeField] private int currentLevelDesign = 0;
+
+    public System.Action onInstanceCreated;
 
     private bool _isPlaying;
 
@@ -25,11 +27,13 @@ public class LevelManager : MonoBehaviour
         }
 
         instance = this;
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        if (onInstanceCreated != null) onInstanceCreated.Invoke();
 
         _levelDesigns[currentLevelDesign].Activate();
 

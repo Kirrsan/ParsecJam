@@ -155,7 +155,6 @@ GameObject:
   - component: {fileID: 1003002239153566688}
   - component: {fileID: 1003002239153566689}
   - component: {fileID: 1003002237571461256}
-  - component: {fileID: 8853851316713957524}
   m_Layer: 0
   m_Name: PlayerEntity
   m_TagString: Player
@@ -200,7 +199,6 @@ MonoBehaviour:
   _dashCountdown: -1
   _visualObj: {fileID: 1003002237701627850}
   shootFunc: {fileID: 0}
-  dashToAim: 1
   _playerDeathTime: 30
   _isDead: 0
   currentPower: 0
@@ -221,19 +219,6 @@ MonoBehaviour:
     type: 3}
   _shootRate: 1
 --- !u!114 &1003002237571461256
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003002239153566690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2397da699e938b4428f4384b89e1ae3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _capsuleObject: {fileID: 1003002237701627851}
---- !u!114 &8853851316713957524
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

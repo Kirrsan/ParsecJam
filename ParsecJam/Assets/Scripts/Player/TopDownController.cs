@@ -19,7 +19,6 @@ public class TopDownController : MonoBehaviour
         {
             players[i].SetIndex(i);
             _rewiredPlayer[i] = ReInput.players.GetPlayer("Player" + (i + 1).ToString());
-            LevelManager.instance.players[i] = players[i];
         }
         _aimMoveDir = new Vector2[players.Length];
 
@@ -29,6 +28,13 @@ public class TopDownController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        LevelManager.instance.onInstanceCreated += () =>
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                LevelManager.instance.players[i] = players[i];
+            }
+        };
 
         GameManager.instance.onStateChange += () =>
         {

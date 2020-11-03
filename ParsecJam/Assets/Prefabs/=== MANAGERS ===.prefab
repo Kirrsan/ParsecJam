@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roundDuration: 30
-  numberOfPlayers: 0
+  roundTimer: 0
   players:
   - {fileID: 0}
   - {fileID: 0}
   _levelDesigns:
-  - {fileID: 0}
+  - {fileID: 244203230008510664, guid: a44a6807364a23a40ab5abb858574383, type: 3}
   currentLevelDesign: 0
 --- !u!1 &3689859214509356243
 GameObject:

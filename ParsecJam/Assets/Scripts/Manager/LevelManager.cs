@@ -10,6 +10,11 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float _roundDuration = 60;
     private float _roundTimer = 0;
     public int numberOfPlayers = 0;
+    [HideInInspector] public TopDownEntity[] players = new TopDownEntity[2];
+    
+    [SerializeField] private LevelDesign[] _levelDesigns;
+    [SerializeField] private int currentLevelDesign = 0;
+
 
     private void Awake()
     {
@@ -25,6 +30,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _levelDesigns[currentLevelDesign].Activate();
         _roundTimer = _roundDuration;
     }
 
@@ -36,5 +42,10 @@ public class LevelManager : MonoBehaviour
         {
             GameManager.instance.ChangeState(State.WIN);
         }
+    }
+
+    public LevelDesign GetCurrentLevelDesign()
+    {
+        return _levelDesigns[currentLevelDesign];
     }
 }

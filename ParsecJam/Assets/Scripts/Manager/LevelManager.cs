@@ -8,7 +8,7 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     [SerializeField] private float _roundDuration = 60;
-    private float _roundTimer = 0;
+    public float roundTimer = 0;
     [HideInInspector] public TopDownEntity[] players = new TopDownEntity[2];
     
     [SerializeField] private LevelDesign[] _levelDesigns;

@@ -8,6 +8,8 @@ public class PickUpPower : MonoBehaviour
 
     [SerializeField]private PowerEnum.Power powerToGive;    
     
+    
+    
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;

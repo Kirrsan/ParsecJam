@@ -19,6 +19,7 @@ public class TopDownController : MonoBehaviour
         {
             players[i].SetIndex(i);
             _rewiredPlayer[i] = ReInput.players.GetPlayer("Player" + (i + 1).ToString());
+            LevelManager.instance.players[i] = players[i];
         }
         _aimMoveDir = new Vector2[players.Length];
 

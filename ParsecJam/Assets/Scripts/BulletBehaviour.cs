@@ -30,6 +30,10 @@ public class BulletBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //other player.dead
+            Respawn respawnP1 = other.transform.parent.GetComponent<Respawn>();
+            respawnP1.StartCoroutine(respawnP1.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
+            Respawn respawnP2 = LevelManager.instance.players[_playerIndex].GetComponent<Respawn>();
+            respawnP2.StartCoroutine(respawnP2.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
             ScoreManager.instance.AddToScore(_playerIndex);
         }
         Destroy(this.gameObject);

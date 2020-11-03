@@ -29,6 +29,10 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private GameObject _visualObj;
     [HideInInspector] public Shoot shootFunc;
     public bool dashToAim = true;
+    
+    [SerializeField] private float _playerDeathTime = 30f;
+    [SerializeField] private bool _isDead = false;
+
 
     private void Awake()
     {
@@ -195,5 +199,11 @@ public class TopDownEntity : MonoBehaviour
                 _velocity -= frictionToApply * frictionDir;
             }
         }
+    }
+
+
+    public void SetIsDead(bool value)
+    {
+        _isDead = value;
     }
 }

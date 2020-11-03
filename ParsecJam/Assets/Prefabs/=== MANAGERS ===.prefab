@@ -122,8 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _roundDuration: 30
-  _roundTimer: 0
-  _canDecreaseTime: 0
 --- !u!1 &3689859214509356243
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,4 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a89954d554301469134bad1cf80422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 0}
+  players:
+  - {fileID: 0}
+  - {fileID: 0}

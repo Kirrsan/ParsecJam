@@ -32,6 +32,9 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private float _playerDeathTime = 30f;
     [SerializeField] private bool _isDead = false;
 
+    [SerializeField] private float _lifeMax = 15;
+    private float _life;
+
 
     
     public PowerEnum.Power currentPower;
@@ -58,6 +61,7 @@ public class TopDownEntity : MonoBehaviour
         };
 
         _dashTimer = _dashCooldown;
+        _life = _lifeMax;
         _isPlaying = true;
     }
 
@@ -68,19 +72,6 @@ public class TopDownEntity : MonoBehaviour
     public int GetIndex()
     {
         return _index;
-    }
-
-
-    public void Dash()
-    {
-        if (_dashTimer >= _dashCooldown)
-        {
-            _dashDir = _velocity.normalized;
-            _dashCountdown = _dashDuration;
-            _isDashing = true;
-
-            _dashTimer = 0;
-        }
     }
 
     private void Update()
@@ -117,6 +108,20 @@ public class TopDownEntity : MonoBehaviour
         }
     }
 
+    #region Dash
+    public void Dash()
+    {
+        if (_dashTimer >= _dashCooldown)
+        {
+            _dashDir = _velocity.normalized;
+            _dashCountdown = _dashDuration;
+            _isDashing = true;
+
+            _dashTimer = 0;
+        }
+    }
+
+
     private void _UpdateDash()
     {
         if (!_isDashing) return;
@@ -141,6 +146,7 @@ public class TopDownEntity : MonoBehaviour
         }
     }
 
+    #endregion
     private void _UpdateVisualOrient()
     {
         float angle = Vector2.SignedAngle(Vector2.right, _orientDir);
@@ -150,6 +156,7 @@ public class TopDownEntity : MonoBehaviour
         _visualObj.transform.eulerAngles = eulerAngles;
     }
 
+    #region Movement
     public void Move(Vector2 dir, Vector2 aimDir)
     {
         _moveDir = dir;
@@ -174,7 +181,6 @@ public class TopDownEntity : MonoBehaviour
             Vector2 frictionDir = _velocity.normalized;
             _velocity -= frictionDir * turnfrictionWithRatio * Time.fixedDeltaTime;
 
-            //_orientDir = _velocity.normalized;
             
         }
         else if (_velocity!= Vector2.zero)
@@ -191,10 +197,33 @@ public class TopDownEntity : MonoBehaviour
             }
         }
     }
+    #endregion
 
+    public void ChangeLife(float lifeToLoose)
+    {
+        _life += lifeToLoose;
+        if(_life <= 0)
+        {
+            _isDead = true;
+        }
+    }
+
+    public float GetLife()
+    {
+        return _life;
+    }
+    public float GetLifeMax()
+    {
+        return _lifeMax;
+    }
 
     public void SetIsDead(bool value)
     {
         _isDead = value;
+    }
+
+    public bool GetIsDead()
+    {
+        return _isDead;
     }
 }

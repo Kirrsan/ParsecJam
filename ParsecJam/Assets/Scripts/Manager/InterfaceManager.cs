@@ -81,6 +81,11 @@ public class InterfaceManager : MonoBehaviour
         _dashCoolDown[player].fillAmount = fillAmount;
     }
 
+    public void AdjustLifeBar(int index, float fillAmount)
+    {
+        _healthBar[index].fillAmount = fillAmount;
+    }
+
     private void SetUpWinPanel()
     {
         string winner = ScoreManager.instance.GetWinner();

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Greg\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Greg\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_ParsecJam.-1775057822.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Greg\Desktop\ParsecJam\ParsecJam\ParsecJam" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Rewired" t="Include">
+          <e p="Documentation" t="Include">
+            <e p="licences.txt" t="Include" />
+            <e p="ReadMe.txt" t="Include" />
+            <e p="ReleaseNotes.txt" t="Include" />
+          </e>
+          <e p="Examples" t="Include">
+            <e p="ControlRemapping1" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="ControlRemappingDemo1.cs" t="Include" />
+              </e>
+            </e>
+            <e p="CustomControllersTilt" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="CustomControllersTiltDemo.cs" t="Include" />
+              </e>
+            </e>
+            <e p="CustomControllersTouch" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="CustomControllerDemo.cs" t="Include" />
+                <e p="CustomControllerDemo_Player.cs" t="Include" />
+                <e p="TouchButtonExample.cs" t="Include" />
+                <e p="TouchJoystickExample.cs" t="Include" />
+              </e>
+            </e>
+            <e p="DualShock4SpecialFeatures" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="DualShock4SpecialFeaturesExample.cs" t="Include" />
+              </e>
+            </e>
+            <e p="EightPlayers" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="EightPlayersExample_Player.cs" t="Include" />
+              </e>
+            </e>
+            <e p="FallbackJoystickIdentification" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="FallbackJoystickIdentificationDemo.cs" t="Include" />
+              </e>
+            </e>
+            <e p="GamepadTemplateUI" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="ControllerUIEffect.cs" t="Include" />
+                <e p="ControllerUIElement.cs" t="Include" />
+                <e p="GamepadTemplateUI.cs" t="Include" />
+              </e>
+            </e>
+            <e p="PlayerMouseSprite" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="PlayerMouseSpriteExample.cs" t="Include" />
+              </e>
+            </e>
+            <e p="PlayerMouseUnityUI" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="PlayerPointerEventHandlerExample.cs" t="Include" />
+                <e p="UIPointer.cs" t="Include" />
+              </e>
+            </e>
+            <e p="PressAnyButtonToJoin" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="PressAnyButtonToJoinExample_Assigner.cs" t="Include" />
+                <e p="PressAnyButtonToJoinExample_GamePlayer.cs" t="Include" />
+              </e>
+            </e>
+            <e p="PressStartToJoin" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="PressStartToJoinExample_Assigner.cs" t="Include" />
+                <e p="PressStartToJoinExample_GamePlayer.cs" t="Include" />
+              </e>
+            </e>
+            <e p="Shared" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="Bullet.cs" t="Include" />
+              </e>
+            </e>
+            <e p="SimpleCombinedKeyboardMouseRemapping" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="SimpleCombinedKeyboardMouseRemapping.cs" t="Include" />
+              </e>
+            </e>
+            <e p="SimpleControlRemapping" t="Include">
+              <e p="Scripts" t="Include">
+                <e p="SimpleControlRemapping.cs" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Extras" t="Include">
+            <e p="TouchControls" t="Include">
+              <e p="Examples" t="Include">
+                <e p="TouchControls1" t="Include">
+                  <e p="Scripts" t="Include">
+                    <e p="TouchControls1_ManipulateCube.cs" t="Include" />
+                  </e>
+                </e>
+              </e>
+              <e p="Scripts" t="Include">
+                <e p="Editor" t="Include">
+                  <e p="MenuCommands.cs" t="Include" />
+                </e>
+              </e>
+              <e p="Shaders" t="Include">
+                <e p="ColorShift.shader" t="Include" />
+              </e>
+            </e>
+          </e>
+          <e p="Integration" t="Include">
+            <e p="UnityUI" t="Include">
+              <e p="Editor" t="Include">
+                <e p="RewiredStandaloneInputModuleInspector.cs" t="Include" />
+              </e>
+              <e p="PlayerPointerEventData.cs" t="Include" />
+              <e p="RewiredPointerInputModule.cs" t="Include" />
+              <e p="RewiredStandaloneInputModule.cs" t="Include" />
+            </e>
+          </e>
+          <e p="Internal" t="Include">
+            <e p="Scripts" t="Include">
+              <e p="ControllerTemplates" t="Include">
+                <e p="ControllerTemplates.cs" t="Include" />
+              </e>
+              <e p="DataStorage" t="Include">
+                <e p="UserDataStore_PlayerPrefs.cs" t="Include" />
+              </e>
+              <e p="Editor" t="Include">
+                <e p="CustomInspectors" t="Include">
+                  <e p="ControllerDataFilesInspector.cs" t="Include" />
+                  <e p="CustomInspector_External.cs" t="Include" />
+                  <e p="HardwareJoystickMapInspector.cs" t="Include" />
+                  <e p="HardwareJoystickTemplateMapInspector.cs" t="Include" />
+                  <e p="InitializerInspector.cs" t="Include" />
+                  <e p="InputManagerInspector.cs" t="Include" />
+                  <e p="PlayerControllerInspector.cs" t="Include" />
+                  <e p="PlayerMouseInspector.cs" t="Include" />
+                  <e p="UserDataStore_PlayerPrefsInspector.cs" t="Include" />
+                </e>
+                <e p="UnityEditorBridge.cs" t="Include" />
+              </e>
+              <e p="InputManager.cs" t="Include" />
+              <e p="Misc" t="Include">
+                <e p="ExternalTools.cs" t="Include" />
+              </e>
+              <e p="Platforms" t="Include">
+                <e p="Ouya" t="Include">
+                  <e p="OuyaInputSource.cs" t="Include" />
+                </e>
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="BulletBehaviour.cs" t="Include" />
+          <e p="DeathFall.cs" t="Include" />
+          <e p="LevelDesign.cs" t="Include" />
+          <e p="Manager" t="Include">
+            <e p="AudioManager.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+            <e p="InterfaceManager.cs" t="Include" />
+            <e p="LevelManager.cs" t="Include" />
+            <e p="ScoreManager.cs" t="Include" />
+            <e p="SoundEffect.cs" t="Include" />
+          </e>
+          <e p="Player" t="Include">
+            <e p="Respawn.cs" t="Include" />
+            <e p="Shoot.cs" t="Include" />
+            <e p="TopDownController.cs" t="Include" />
+            <e p="TopDownEntity.cs" t="Include" />
+          </e>
+          <e p="Power" t="Include">
+            <e p="Mine.cs" t="Include" />
+            <e p="PickUpPower.cs" t="Include" />
+          </e>
+          <e p="PowerEnum.cs" t="Include" />
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="ParsecJam.sln" t="IncludeFlat" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>

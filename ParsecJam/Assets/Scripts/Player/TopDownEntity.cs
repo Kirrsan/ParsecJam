@@ -32,6 +32,11 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private float _playerDeathTime = 30f;
     [SerializeField] private bool _isDead = false;
 
+
+    
+    public PowerEnum.Power currentPower;
+
+
     private void Awake()
     {
         shootFunc = GetComponent<Shoot>();

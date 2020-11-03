@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
+    private int _index;
 
     [SerializeField] private GameObject _bulletSpawner;
     [SerializeField] private GameObject _bulletPrefab;
@@ -14,7 +15,7 @@ public class Shoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _index = GetComponent<TopDownEntity>().GetIndex();
     }
 
     public void ShootBullet()
@@ -23,6 +24,7 @@ public class Shoot : MonoBehaviour
         {
             _canShoot = false;
             GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawner.transform.position, _bulletSpawner.transform.rotation);
+            bullet.GetComponent<BulletBehaviour>().SetPlayerIndex(_index);
             StartCoroutine(WaitBeforeShootingAgain());
         }
     }

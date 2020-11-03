@@ -5,6 +5,8 @@ using UnityEngine;
 public class TopDownEntity : MonoBehaviour
 {
 
+    private int _index = 0;
+
     [SerializeField] private float _acceleration = 20f;
     [SerializeField] private float _moveSpeedMax = 10f;
     [SerializeField] private float _friction = 30f;
@@ -50,6 +52,16 @@ public class TopDownEntity : MonoBehaviour
 
         _isPlaying = true;
     }
+
+    public void SetIndex(int newIndex)
+    {
+        _index = newIndex;
+    }
+    public int GetIndex()
+    {
+        return _index;
+    }
+
 
     public void Dash()
     {

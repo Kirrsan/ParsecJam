@@ -6,6 +6,7 @@ public class BulletBehaviour : MonoBehaviour
 {
 
     [SerializeField] private float _speed;
+    private int _playerIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,8 +20,18 @@ public class BulletBehaviour : MonoBehaviour
         transform.position += transform.forward * Time.deltaTime * _speed;
     }
 
+    public void SetPlayerIndex(int index)
+    {
+        _playerIndex = index;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //other player.dead
+            ScoreManager.instance.AddToScore(_playerIndex);
+        }
         Destroy(this.gameObject);
     }
 }

@@ -12,6 +12,19 @@ public class TopDownController : MonoBehaviour
 
     private bool _isPlaying;
 
+    private void Awake()
+    {
+        _rewiredPlayer = new Player[players.Length];
+        for (int i = 0; i < players.Length; i++)
+        {
+            players[i].SetIndex(i);
+            _rewiredPlayer[i] = ReInput.players.GetPlayer("Player" + (i + 1).ToString());
+        }
+        _aimMoveDir = new Vector2[players.Length];
+
+        LevelManager.instance.numberOfPlayers = players.Length;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,13 +40,6 @@ public class TopDownController : MonoBehaviour
                 _isPlaying = true;
             }
         };
-
-        _rewiredPlayer = new Player[players.Length];
-        for (int i = 0; i < players.Length; i++)
-        {
-            _rewiredPlayer[i] = ReInput.players.GetPlayer("Player" + (i+1).ToString());
-        }
-        _aimMoveDir = new Vector2[players.Length];
 
         _isPlaying = true;
     }

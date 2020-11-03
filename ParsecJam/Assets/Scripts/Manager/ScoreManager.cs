@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class ScoreManager : MonoBehaviour
 {
 
-    public static LevelManager instance;
-
-    [SerializeField] private float _roundDuration = 60;
-    private float _roundTimer = 0;
-    public int numberOfPlayers = 0;
+    public static ScoreManager instance;
+    private float[] _scores;
 
     private void Awake()
     {
@@ -25,16 +22,18 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _roundTimer = _roundDuration;
+        _scores = new float[LevelManager.instance.numberOfPlayers];
     }
 
     // Update is called once per frame
     void Update()
     {
-        _roundTimer -= Time.deltaTime;
-        if (_roundTimer <= 0)
-        {
-            GameManager.instance.ChangeState(State.WIN);
-        }
+        
     }
+
+    public void AddToScore(int index)
+    {
+        _scores[index] += 1;
+    }
+
 }

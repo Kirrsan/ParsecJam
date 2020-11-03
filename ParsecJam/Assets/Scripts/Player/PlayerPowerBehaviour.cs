@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerPowerBehaviour : MonoBehaviour
 {
 
+    private TopDownEntity _playerEntity;
+
     private Power _currentPower;
     [Header("Mine Settings")]
     [SerializeField] private GameObject _minePrefab;
@@ -12,10 +14,14 @@ public class PlayerPowerBehaviour : MonoBehaviour
     private bool _mineSetUp = false;
     private Mine _currentMine;
 
+    [Header("Shield Settings")]
+    [SerializeField] private GameObject _shieldPrefab;
+    [SerializeField] private Transform _shieldSpawner;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        _playerEntity = GetComponent<TopDownEntity>();
     }
 
     // Update is called once per frame
@@ -44,6 +50,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
                 UseMine();
                 break;
             case Power.Shield:
+                UseShield();
                 break;
             case Power.Rocket:
                 break;
@@ -70,6 +77,14 @@ public class PlayerPowerBehaviour : MonoBehaviour
             _mineSetUp = false;
             _currentPower = Power.None;
         }
+    }
+
+    private void UseShield()
+    {
+        Shield _currentShield = Instantiate(_shieldPrefab, _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
+        _currentShield.transform.rotation = _shieldSpawner.rotation;
+        _currentShield.SetPlayerProtected(_playerEntity.GetIndex());
+        _currentPower = Power.None;
     }
 
 }

@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
 
     private bool _isPlaying;
 
+    public List<Shield> shieldList = new List<Shield>();
+
     private void Awake()
     {
         if (instance != null && instance != this)

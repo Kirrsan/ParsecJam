@@ -24,7 +24,7 @@ public class Respawn : MonoBehaviour
     {
         //animation or thing to do
         yield return new WaitForSeconds(deathTimer); 
-        _children.position = new Vector3( _respawnPoint.transform.position.x,  _respawnPoint.transform.position.y,  _respawnPoint.transform.position.z);
+        transform.position = new Vector3( _respawnPoint.transform.position.x,  _respawnPoint.transform.position.y,  _respawnPoint.transform.position.z);
         GetComponent<TopDownEntity>().SetIsDead(false);
     }
 }

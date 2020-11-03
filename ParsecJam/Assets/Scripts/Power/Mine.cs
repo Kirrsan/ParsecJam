@@ -37,7 +37,7 @@ public class Mine : MonoBehaviour
             }
             else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
             {
-                MaxRadiusBehaviour(players[i].transform.GetChild(0).GetChild(0));
+                MaxRadiusBehaviour(players[i].transform);
             }
         }
 

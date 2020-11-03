@@ -29,7 +29,7 @@ public class BulletBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            TopDownEntity otherPlayer = other.GetComponentInParent<TopDownEntity>();
+            TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
             otherPlayer.ChangeLife(-1);
         }
         Destroy(this.gameObject);

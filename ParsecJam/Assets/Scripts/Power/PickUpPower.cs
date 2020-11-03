@@ -23,7 +23,7 @@ public class PickUpPower : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        TopDownEntity entity = other.GetComponentInParent<TopDownEntity>();
+        TopDownEntity entity = other.GetComponent<TopDownEntity>();
         entity.SetPickable(this);
     }
 

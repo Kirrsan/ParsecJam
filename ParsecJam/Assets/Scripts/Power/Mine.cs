@@ -27,21 +27,57 @@ public class Mine : MonoBehaviour
             
             if (distanceToPlayer < innerCircleDistance * innerCircleDistance)
             {
+                RaycastHit hit;
+                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
+                {
+                    if (hit.collider.gameObject.CompareTag("Wall"))
+                    {
+                        if(hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
+                        {
+                            break;
+                        }
+                    }
+                }
+
                 _playerInInner = players[i];
                 _playersInInner++;
             }
             else if (distanceToPlayer < middleCircleDistance * middleCircleDistance)
             {
+                RaycastHit hit;
+                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
+                {
+                    if (hit.collider.gameObject.CompareTag("Wall"))
+                    {
+                        if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
+                        {
+                            return;
+                        }
+                    }
+                }
+
                 MiddleCircleBehaviour(players[i]);
 
             }
             else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
             {
+                RaycastHit hit;
+                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
+                {
+                    if (hit.collider.gameObject.CompareTag("Wall"))
+                    {
+                        if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
+                        {
+                            return;
+                        }
+                    }
+                }
+
                 MaxRadiusBehaviour(players[i].transform);
             }
         }
 
-        if(_playersInInner == 2)
+        if (_playersInInner == 2)
         {
             InnerCircleBehaviour(players[0]);
             InnerCircleBehaviour(players[1]);
@@ -50,6 +86,27 @@ public class Mine : MonoBehaviour
         {
             InnerCircleBehaviour(_playerInInner);
             _playerInInner = null;
+        }
+
+
+
+        for (int i = 0; i < LevelManager.instance.shieldList.Count; i++)
+        {
+            float distanceToPlayer = CalculateDistance(LevelManager.instance.shieldList[i].transform);
+
+            if (distanceToPlayer < innerCircleDistance * innerCircleDistance)
+            {
+                InnerCircleBehaviour(LevelManager.instance.shieldList[i]);
+            }
+            else if (distanceToPlayer < middleCircleDistance * middleCircleDistance)
+            {
+                MiddleCircleBehaviour(LevelManager.instance.shieldList[i]);
+
+            }
+            else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
+            {
+                MaxRadiusBehaviour(players[i].transform);
+            }
         }
     }
 
@@ -61,6 +118,19 @@ public class Mine : MonoBehaviour
         }
     }
 
+    #region Shield
+    private void MiddleCircleBehaviour(Shield entity)
+    {
+        entity.LooseLife((entity.GetLifeMax() / 3));
+    }
+
+    private void InnerCircleBehaviour(Shield entity)
+    {
+        entity.DestroyWall();
+    }
+    #endregion
+
+    #region Player
     private void MaxRadiusBehaviour(Transform target)
     {
         Vector3 pushDirection = (target.transform.position - transform.position).normalized;
@@ -77,7 +147,8 @@ public class Mine : MonoBehaviour
     {
         entity.Kill(entity.GetIndex());
     }
-    
+    #endregion
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

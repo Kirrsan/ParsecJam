@@ -32,6 +32,10 @@ public class BulletBehaviour : MonoBehaviour
             TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
             otherPlayer.ChangeLife(-1);
         }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            other.GetComponent<Shield>().LooseLife(1);
+        }
         Destroy(this.gameObject);
     }
 }

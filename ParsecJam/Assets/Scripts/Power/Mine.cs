@@ -20,7 +20,6 @@ public class Mine : MonoBehaviour
     {
         TopDownEntity[] players = LevelManager.instance.players;
         
-        if(players)
     }
 
     private void OnDrawGizmosSelected()

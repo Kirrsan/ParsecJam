@@ -123,6 +123,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _roundDuration: 30
   numberOfPlayers: 0
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  _levelDesigns:
+  - {fileID: 0}
+  currentLevelDesign: 0
 --- !u!1 &3689859214509356243
 GameObject:
   m_ObjectHideFlags: 0

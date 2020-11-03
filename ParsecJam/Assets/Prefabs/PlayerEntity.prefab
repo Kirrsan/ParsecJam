@@ -214,6 +214,7 @@ MonoBehaviour:
   _bulletSpawner: {fileID: 1003002238870547454}
   _bulletPrefab: {fileID: 6474714074037915856, guid: b6df08dcc1926974aa2b747e2f3e802f,
     type: 3}
+  _shootRate: 1
 --- !u!1 &1003002239380395140
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,7 +22,7 @@ public class TopDownController : MonoBehaviour
         }
         _aimMoveDir = new Vector2[players.Length];
 
-        LevelManager.instance.numberOfPlayers = players.Length;
+        ScoreManager.instance.numberOfPlayers = players.Length;
     }
 
     // Start is called before the first frame update

@@ -28,7 +28,6 @@ public class TopDownEntity : MonoBehaviour
 
     [SerializeField] private GameObject _visualObj;
     [HideInInspector] public Shoot shootFunc;
-    public bool dashToAim = true;
 
     private void Awake()
     {
@@ -50,6 +49,7 @@ public class TopDownEntity : MonoBehaviour
             }
         };
 
+        _dashTimer = _dashCooldown;
         _isPlaying = true;
     }
 
@@ -65,27 +65,13 @@ public class TopDownEntity : MonoBehaviour
 
     public void Dash()
     {
-        if (_dashTimer <= 0)
+        if (_dashTimer >= _dashCooldown)
         {
-            if (dashToAim)
-            {
-                if (_orientDir == Vector2.zero)
-                {
-                    _dashDir = Vector2.right;
-                }
-                else
-                {
-                    _dashDir = _orientDir;
-                }
-            }
-            else
-            {
-                _dashDir = _velocity.normalized;
-            }
+            _dashDir = _velocity.normalized;
             _dashCountdown = _dashDuration;
             _isDashing = true;
 
-            _dashTimer = _dashCooldown;
+            _dashTimer = 0;
         }
     }
 
@@ -93,9 +79,10 @@ public class TopDownEntity : MonoBehaviour
     {
         if (_isPlaying)
         {
-            if (_dashTimer > 0)
+            if (_dashTimer < _dashCooldown)
             {
-                _dashTimer -= Time.deltaTime;
+                _dashTimer += Time.deltaTime;
+                InterfaceManager.instance.FillCoolDown(_index, _dashTimer * (0.75f/_dashCooldown));
             }
         }
     }

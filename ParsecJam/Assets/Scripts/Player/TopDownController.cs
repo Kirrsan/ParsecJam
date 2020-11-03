@@ -46,5 +46,12 @@ public class TopDownController : MonoBehaviour
         {
             entity.shootFunc.ShootBullet();
         }
+
+
+        if (_rewiredPlayer.GetButtonDown("Pause"))
+        {
+            GameManager.instance.Pause();
+        }
+
     }
 }

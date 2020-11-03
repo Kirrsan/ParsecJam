@@ -22,6 +22,8 @@ public class TopDownEntity : MonoBehaviour
     private bool _isDashing = false;
     private float _dashTimer;
 
+    private bool _isPlaying = false;
+
     [SerializeField] private GameObject _visualObj;
     [HideInInspector] public Shoot shootFunc;
     public bool dashToAim = true;
@@ -34,7 +36,19 @@ public class TopDownEntity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameManager.instance.onStateChange += () =>
+        {
+            if(GameManager.instance.state != State.INGAME)
+            {
+                _isPlaying = false;
+            }
+            else
+            {
+                _isPlaying = true;
+            }
+        };
+
+        _isPlaying = true;
     }
 
     public void Dash()
@@ -65,29 +79,35 @@ public class TopDownEntity : MonoBehaviour
 
     private void Update()
     {
-        if(_dashTimer > 0)
+        if (_isPlaying)
         {
-            _dashTimer -= Time.deltaTime;
+            if (_dashTimer > 0)
+            {
+                _dashTimer -= Time.deltaTime;
+            }
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_isDashing)
+        if (_isPlaying)
         {
-            _UpdateDash();
-        }
-        else
-        {
-            _UpdateMove();
-            _UpdateVisualOrient();
-        }
+            if (_isDashing)
+            {
+                _UpdateDash();
+            }
+            else
+            {
+                _UpdateMove();
+                _UpdateVisualOrient();
+            }
 
-        Vector3 newPosition = transform.position;
-        newPosition.x += _velocity.x * Time.fixedDeltaTime;
-        newPosition.z += _velocity.y * Time.fixedDeltaTime;
-        transform.position = newPosition;
+            Vector3 newPosition = transform.position;
+            newPosition.x += _velocity.x * Time.fixedDeltaTime;
+            newPosition.z += _velocity.y * Time.fixedDeltaTime;
+            transform.position = newPosition;
+        }
     }
 
     private void _UpdateDash()

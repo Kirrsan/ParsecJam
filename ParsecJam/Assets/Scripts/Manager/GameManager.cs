@@ -40,4 +40,17 @@ public class GameManager : MonoBehaviour {
         state = newState;
         if (onStateChange != null) onStateChange.Invoke();
     }
+
+    public void Pause()
+    {
+        if(state == State.PAUSE)
+        {
+            ChangeState(State.INGAME);
+        }
+        else if(state == State.INGAME)
+        {
+            ChangeState(State.PAUSE);
+        }
+    }
+
 }

@@ -7,9 +7,22 @@ using System.Collections;
 public class InterfaceManager : MonoBehaviour
 {
 
+    public static InterfaceManager instance;
+
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _winPanel;
+
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        instance = this;
+    }
 
 
     // Start is called before the first frame update
@@ -35,10 +48,7 @@ public class InterfaceManager : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            GoInpause();
-        }
+        
     }
 
     public void GoInpause()

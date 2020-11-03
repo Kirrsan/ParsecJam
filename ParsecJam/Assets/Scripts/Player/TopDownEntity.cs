@@ -139,6 +139,11 @@ public class TopDownEntity : MonoBehaviour
         _canPickUpSomething = true;
         _pickUp = pickable;
     }
+    public void ResetPickable()
+    {
+        _canPickUpSomething = false;
+        _pickUp = null;
+    }
 
     #region Dash
     public void Dash()

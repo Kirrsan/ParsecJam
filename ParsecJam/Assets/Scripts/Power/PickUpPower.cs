@@ -27,6 +27,14 @@ public class PickUpPower : MonoBehaviour
         entity.SetPickable(this);
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (!other.CompareTag("Player")) return;
+
+        TopDownEntity entity = other.GetComponent<TopDownEntity>();
+        entity.ResetPickable();
+    }
+
     public Power GivePower()
     {
         return powerToGive;

@@ -7,7 +7,7 @@ public class Respawn : MonoBehaviour
 {
     private int _currentPlayerIndex = 0;
     private GameObject _respawnPoint;
-    [SerializeField] private Transform _capsuleObject;
+    [SerializeField] private Transform _children;
 
     public static float respawnTimeBulletKill;
     public static float respawnTimeFallDeath;
@@ -24,7 +24,7 @@ public class Respawn : MonoBehaviour
     {
         //animation or thing to do
         yield return new WaitForSeconds(deathTimer); 
-        _capsuleObject.position = new Vector3( _respawnPoint.transform.position.x,  _respawnPoint.transform.position.y,  _respawnPoint.transform.position.z);
+        _children.position = new Vector3( _respawnPoint.transform.position.x,  _respawnPoint.transform.position.y,  _respawnPoint.transform.position.z);
         GetComponent<TopDownEntity>().SetIsDead(false);
     }
 }

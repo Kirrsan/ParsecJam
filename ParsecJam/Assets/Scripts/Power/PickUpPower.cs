@@ -3,10 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Power
+{
+    None,
+    Mine,
+    Shield,
+    Rocket,
+    Cancel,
+}
+
 public class PickUpPower : MonoBehaviour
 {
 
-    [SerializeField]private PowerEnum.Power powerToGive;    
+    [SerializeField]private Power powerToGive;    
     
     
     
@@ -14,7 +23,13 @@ public class PickUpPower : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        TopDownEntity entity = other.GetComponent<TopDownEntity>();
-        entity.currentPower = powerToGive;
+        TopDownEntity entity = other.GetComponentInParent<TopDownEntity>();
+        entity.SetPickable(this);
     }
+
+    public Power GivePower()
+    {
+        return powerToGive;
+    }
+
 }

@@ -13,13 +13,10 @@ public class Mine : MonoBehaviour
     public float innerCircleDistance;
 
     public bool _isMinePlaced = false;
-    
-    
-    //TODO : reste à faire l'activation posage de mine et l'activation à distance de la mine, sorry j'ai pas trop le temps de le faire là :(
-    
-    //TODO: pour le posage de mine faudra répertorier l'index du joueur qui l'a posé, pour enlever son pouvoir quand la mine aura bakooooooooooooooooooooooom
-    
-    //TODO : A appeler quand ya l'activation à distance ;)
+
+    private int _playersInInner = 0;
+    private TopDownEntity _playerInInner;
+
     public void TriggerPower()
     {
         TopDownEntity[] players = LevelManager.instance.players;
@@ -27,30 +24,33 @@ public class Mine : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             float distanceToPlayer = CalculateDistance(players[i].transform);
-           Debug.Log(distanceToPlayer);
             
             if (distanceToPlayer < innerCircleDistance * innerCircleDistance)
             {
-                InnerCircleBehaviour(players[i]);
-                Debug.Log("inner");
-
+                _playerInInner = players[i];
+                _playersInInner++;
             }
             else if (distanceToPlayer < middleCircleDistance * middleCircleDistance)
             {
                 MiddleCircleBehaviour(players[i]);
-                Debug.Log("middle");
 
             }
             else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
             {
-                MaxRadiusBehaviour(players[i].transform.GetChild(0));
-                Debug.Log("max");
+                MaxRadiusBehaviour(players[i].transform.GetChild(0).GetChild(0));
             }
         }
-        //TODO : enlever le pouvoir du joueur 
-        
-        
-        gameObject.SetActive(false);
+
+        if(_playersInInner == 2)
+        {
+            InnerCircleBehaviour(players[0]);
+            InnerCircleBehaviour(players[1]);
+        }
+        else if (_playerInInner != null)
+        {
+            InnerCircleBehaviour(_playerInInner);
+            _playerInInner = null;
+        }
     }
 
     private void Update()
@@ -70,12 +70,12 @@ public class Mine : MonoBehaviour
     
     private void MiddleCircleBehaviour(TopDownEntity entity)
     {
-        // perd la moitié de sa vie
+        entity.ChangeLife((entity.GetLifeMax()/-2));
     }
     
     private void InnerCircleBehaviour(TopDownEntity entity)
     {
-        // met sa vie à 0 (si t'as géré ce behaviour là :p)
+        entity.Kill(entity.GetIndex());
     }
     
     private void OnDrawGizmosSelected()

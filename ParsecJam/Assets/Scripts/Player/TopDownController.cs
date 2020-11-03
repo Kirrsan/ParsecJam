@@ -84,6 +84,14 @@ public class TopDownController : MonoBehaviour
             {
                 players[0].shootFunc.ShootBullet();
             }
+            if (_rewiredPlayer[0].GetButtonDown("PickUp"))
+            {
+                players[0].Pickup();
+            }
+            if (_rewiredPlayer[0].GetButtonDown("Power"))
+            {
+                players[0].powerBehaviour.UsePower();
+            }
             #endregion
 
             #region Player2
@@ -113,6 +121,10 @@ public class TopDownController : MonoBehaviour
             if (_rewiredPlayer[1].GetButton("Shoot"))
             {
                 players[1].shootFunc.ShootBullet();
+            }
+            if (_rewiredPlayer[1].GetButtonDown("PickUp"))
+            {
+                players[1].Pickup();
             }
             #endregion
         }

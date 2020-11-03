@@ -83,7 +83,19 @@ public class LevelManager : MonoBehaviour
             respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
 
             players[i].ChangeLife(players[i].GetLifeMax());
-            InterfaceManager.instance.AdjustLifeBar(i, 1);
         }
+    }
+
+    public int GetOtherPlayer(int playerIndex)
+    {
+        int other = -1;
+        for (int i = 0; i < players.Length; i++)
+        {
+            if (i != playerIndex)
+            {
+                other = players[i].GetIndex();
+            }
+        }
+        return other;
     }
 }

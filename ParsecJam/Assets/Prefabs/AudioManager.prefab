@@ -1,0 +1,183 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5737214271150360536
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5737214271150360535}
+  - component: {fileID: 5737214271150360534}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5737214271150360535
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737214271150360536}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5737214271150360534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737214271150360536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab2ee668cd6a8d47a81528559e61e6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - clipName: DashCooldownComplete
+    clip:
+    - {fileID: 8300000, guid: 699479d96e010bc49aba887161ee754e, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: DashWind
+    clip:
+    - {fileID: 8300000, guid: 059f21c28c38fcf4b82142ff4931aee5, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: DashGroan
+    clip:
+    - {fileID: 8300000, guid: c268dacfebddb174e9f2ed9c41d5b83c, type: 3}
+    - {fileID: 8300000, guid: b388f59de5bdbe345a6f080d155db2b2, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: DeathSound
+    clip:
+    - {fileID: 8300000, guid: d4f1f5b26cb8bdc429703d39a8fb698f, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: PlayerFall
+    clip:
+    - {fileID: 8300000, guid: ddd6b92ac4bd31a4aa74e9fe852a6f8b, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: PlayerHit
+    clip:
+    - {fileID: 8300000, guid: a1504b497e586904a8e4c3fdf4df2fb3, type: 3}
+    - {fileID: 8300000, guid: 737618203f5c16d4e96b11dadf4cd8fc, type: 3}
+    - {fileID: 8300000, guid: d33145a7239a9a84da869efc842911cd, type: 3}
+    - {fileID: 8300000, guid: f6ae19c4a3b61f64f8a38552ffa4a480, type: 3}
+    - {fileID: 8300000, guid: 10184cd031fa31b46972b0c51de7f060, type: 3}
+    - {fileID: 8300000, guid: 9b2ad44c3e3d90048bc3406c1519a789, type: 3}
+    - {fileID: 8300000, guid: 8ee28b4bcc30d354ab38d97125566524, type: 3}
+    - {fileID: 8300000, guid: 2e6883fbd6cbd2c4698f2a0dd2cbd078, type: 3}
+    - {fileID: 8300000, guid: 7696f9a1992cfbd45898866f44874114, type: 3}
+    - {fileID: 8300000, guid: cfd98bb0ad284c848982b14310702a17, type: 3}
+    - {fileID: 8300000, guid: c3b8a151ffb3a71449a5b903e9c49bb6, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: WillScream
+    clip:
+    - {fileID: 8300000, guid: 11a3becceca127540b9fe85d3d47faa6, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: EndTie
+    clip:
+    - {fileID: 8300000, guid: 51fb2cc765d28ad47bd551768f2dc785, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: EndVictory
+    clip:
+    - {fileID: 8300000, guid: 172e0e933959dc541a9e1af1e9e0500b, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: Mine
+    clip:
+    - {fileID: 8300000, guid: 0b946134e82028649a224b440b97afc1, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: PlayerSpawn
+    clip:
+    - {fileID: 8300000, guid: 77d2f15af5e4b4d4c86cd1a212a955fd, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: PowerPickUp
+    clip:
+    - {fileID: 8300000, guid: 9cbce52f9b2ebec47b81c22e1ec11083, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: ShieldBreak
+    clip:
+    - {fileID: 8300000, guid: 9353ca38f15e3b841a6b87247a198753, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: ShieldDrop
+    clip:
+    - {fileID: 8300000, guid: 0767753a8bd20dc42b4732ab8293db98, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: ShieldHit
+    clip:
+    - {fileID: 8300000, guid: 98209d6996bd4b44c851f8689ec32bd7, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: UIBack
+    clip:
+    - {fileID: 8300000, guid: e3b828884bb3e5347b63fc1b0e5745dc, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: UINavigation
+    clip:
+    - {fileID: 8300000, guid: 86363cf690a14f74895783bd973b8bf6, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}
+  - clipName: UISelect
+    clip:
+    - {fileID: 8300000, guid: 67a2f7bf6354a6b4ca088d1677a658e4, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}

@@ -20,6 +20,9 @@ public class LevelManager : MonoBehaviour
 
     public List<Shield> shieldList = new List<Shield>();
 
+    public float respawnTimeBulletKill = 1;
+    public float respawnTimeFallDeath = 1;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -75,14 +78,14 @@ public class LevelManager : MonoBehaviour
         return _levelDesigns[currentLevelDesign];
     }
 
-    public void RespawnPlayers()
+    public void RespawnPlayers(float respawnTime)
     {
         Respawn respawn;
 
         for (int i = 0; i < players.Length; i++)
         {
             respawn = players[i].GetComponent<Respawn>();
-            respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
+            respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(respawnTime));
 
             players[i].SetLife(players[i].GetLifeMax());
         }

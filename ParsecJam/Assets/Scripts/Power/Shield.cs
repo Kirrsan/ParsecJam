@@ -34,11 +34,14 @@ public class Shield : MonoBehaviour
         if (_life <= 0)
         {
             DestroyWall();
+            return;
         }
+        AudioManager.instance.Play("ShieldHit");
     }
 
     public void DestroyWall()
     {
+        AudioManager.instance.Play("ShieldBreak");
         LevelManager.instance.shieldList.Remove(this);
         Destroy(this.transform.parent.gameObject);
     }

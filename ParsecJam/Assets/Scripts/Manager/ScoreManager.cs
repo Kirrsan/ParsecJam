@@ -51,13 +51,17 @@ public class ScoreManager : MonoBehaviour
         string temp = "";
         if(_scores[0] > _scores[1])
         {
+            AudioManager.instance.Play("EndVictory");
             temp = "1-" + _scores[0].ToString();
         }
-        else if(_scores[0] < _scores[1]){
+        else if(_scores[0] < _scores[1])
+        {
+            AudioManager.instance.Play("EndVictory");
             temp = "2-" + _scores[1].ToString();
         }
         else
         {
+            AudioManager.instance.Play("EndTie");
             temp = "tie";
         }
         return temp;

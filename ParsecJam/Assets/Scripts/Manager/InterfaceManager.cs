@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -7,6 +9,7 @@ public class InterfaceManager : MonoBehaviour
 
     public static InterfaceManager instance;
 
+    [SerializeField] private EventSystem _eventSystem;
     [SerializeField] private GameObject _gamePanel;
     [SerializeField] private GameObject _pausePanel;
     [SerializeField] private GameObject _winPanel;
@@ -24,6 +27,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image[] _healthBar;
     [SerializeField] private Image[] _powerImage;
     [SerializeField] private Sprite[] _powerIcons;
+
+    private GameObject _lastSelectedGameObject;
 
 
     private void Awake()
@@ -57,7 +62,6 @@ public class InterfaceManager : MonoBehaviour
             }
         };
 
-
         GoToGame();
     }
 
@@ -65,6 +69,16 @@ public class InterfaceManager : MonoBehaviour
     private void Update()
     {
         _timerText.text = FormatTime(LevelManager.instance.roundTimer);
+
+        GameObject currentSelectedGameObject = _eventSystem.currentSelectedGameObject;
+        if (currentSelectedGameObject != _lastSelectedGameObject)
+        {
+            if (_lastSelectedGameObject != null)
+            {
+                AudioManager.instance.Play("UINavigation");
+            }
+            _lastSelectedGameObject = currentSelectedGameObject;
+        }
     }
 
     private string FormatTime(float time)
@@ -167,17 +181,31 @@ public class InterfaceManager : MonoBehaviour
 
     public void Resume()
     {
+        AudioManager.instance.Play("UISelect");
         GameManager.instance.ChangeState(State.INGAME);
         Time.timeScale = 1;
     }
 
     public void Retry()
     {
+        AudioManager.instance.Play("UISelect");
+        StartCoroutine(WaitAndRetry());
+    }
+    private IEnumerator WaitAndRetry()
+    {
+        yield return new WaitForSecondsRealtime(AudioManager.instance.GetClipLength("UISelect"));
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
     }
+
     public void BackToMenu()
     {
+        AudioManager.instance.Play("UISelect");
+        StartCoroutine(WaitAndGoBackToMenu());
+    }
+    private IEnumerator WaitAndGoBackToMenu()
+    {
+        yield return new WaitForSecondsRealtime(AudioManager.instance.GetClipLength("UISelect"));
         SceneManager.LoadScene(0);
         Time.timeScale = 1;
     }

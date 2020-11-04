@@ -2195,7 +2195,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8686590040254711629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2301,6 +2301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c51f5d3c794cff5418d0ffe2c9ab4e58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eventSystem: {fileID: 6736007497721280725}
   _gamePanel: {fileID: 8686590040468578915}
   _pausePanel: {fileID: 8686590040254711624}
   _winPanel: {fileID: 8686590040559019667}

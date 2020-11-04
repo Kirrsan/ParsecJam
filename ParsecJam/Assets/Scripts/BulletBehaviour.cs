@@ -27,10 +27,18 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            return;
+        }
         if (other.gameObject.CompareTag("Player"))
         {
-            TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
-            otherPlayer.ChangeLife(-1);
+            if (other.GetComponent<TopDownEntity>().GetIndex() != _playerIndex)
+            {
+                TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
+                otherPlayer.ChangeLife(-1);
+                return;
+            }
         }
         else if (other.gameObject.CompareTag("Wall"))
         {

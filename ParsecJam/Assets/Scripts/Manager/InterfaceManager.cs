@@ -25,6 +25,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Text _timerText;
     [SerializeField] private Image[] _dashCoolDown;
     [SerializeField] private Image[] _healthBar;
+    [SerializeField] private Image[] _shootBar;
     [SerializeField] private Image[] _powerImage;
     [SerializeField] private Sprite[] _powerIcons;
 
@@ -100,6 +101,11 @@ public class InterfaceManager : MonoBehaviour
     public void AdjustLifeBar(int index, float fillAmount)
     {
         _healthBar[index].fillAmount = fillAmount;
+    }
+
+    public void AdjustShootBar(int index, float fillAmount)
+    {
+        _shootBar[index].fillAmount = fillAmount;
     }
 
     public void ChangePowerIcon(int player, Power power)

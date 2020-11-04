@@ -24,55 +24,28 @@ public class Mine : MonoBehaviour
         for (int i = 0; i < players.Length; i++)
         {
             float distanceToPlayer = CalculateDistance(players[i].transform);
-            
-            if (distanceToPlayer < innerCircleDistance * innerCircleDistance)
+            RaycastHit hit;
+            if (Physics.Raycast(players[i].transform.position, transform.position - players[i].transform.position, out hit, mineMaxRadius))
             {
-                RaycastHit hit;
-                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
+                if (hit.collider.gameObject.CompareTag("Wall"))
                 {
-                    if (hit.collider.gameObject.CompareTag("Wall"))
+                    if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
                     {
-                        if(hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
-                        {
-                            break;
-                        }
+                        break;
                     }
                 }
-
+            }
+            if (distanceToPlayer < innerCircleDistance * innerCircleDistance)
+            {
                 _playerInInner = players[i];
                 _playersInInner++;
             }
             else if (distanceToPlayer < middleCircleDistance * middleCircleDistance)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
-                {
-                    if (hit.collider.gameObject.CompareTag("Wall"))
-                    {
-                        if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
-                        {
-                            return;
-                        }
-                    }
-                }
-
                 MiddleCircleBehaviour(players[i]);
-
             }
             else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
             {
-                RaycastHit hit;
-                if (Physics.Raycast(players[i].transform.position, transform.position, out hit, mineMaxRadius))
-                {
-                    if (hit.collider.gameObject.CompareTag("Wall"))
-                    {
-                        if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
-                        {
-                            return;
-                        }
-                    }
-                }
-
                 MaxRadiusBehaviour(players[i].transform);
             }
         }
@@ -103,19 +76,16 @@ public class Mine : MonoBehaviour
                 MiddleCircleBehaviour(LevelManager.instance.shieldList[i]);
 
             }
-            else if (distanceToPlayer < mineMaxRadius * mineMaxRadius)
-            {
-                MaxRadiusBehaviour(players[i].transform);
-            }
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            TriggerPower();
-        }
+        Debug.DrawRay(LevelManager.instance.players[0].transform.position, this.transform.position - LevelManager.instance.players[0].transform.position, Color.green, mineMaxRadius);
+        //if (Input.GetKeyDown(KeyCode.Y))
+        //{
+        //    TriggerPower();
+        //}
     }
 
     #region Shield

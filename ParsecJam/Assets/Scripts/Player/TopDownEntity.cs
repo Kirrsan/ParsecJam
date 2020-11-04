@@ -14,7 +14,7 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private float _turnFriction = 30f;
 
     private Vector2 _moveDir;
-    private Vector2 _orientDir = Vector2.left;
+    private Vector2 _orientDir = Vector2.up;
     private Vector2 _velocity = Vector2.zero;
 
     [Header("Dash Settings")]
@@ -186,7 +186,7 @@ public class TopDownEntity : MonoBehaviour
     #endregion
     private void _UpdateVisualOrient()
     {
-        float angle = Vector2.SignedAngle(Vector2.left, _orientDir);
+        float angle = Vector2.SignedAngle(Vector2.up, _orientDir);
 
         Vector3 eulerAngles = _visualObj.transform.eulerAngles;
         eulerAngles.y = -angle;

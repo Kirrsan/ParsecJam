@@ -7,6 +7,7 @@ public class Mine : MonoBehaviour
 {
 
     public float pushPower = 5;
+    public float pushPowerMiddleCircle = 8;
 
     public float mineMaxRadius;
     public float middleCircleDistance;
@@ -107,6 +108,9 @@ public class Mine : MonoBehaviour
     
     private void MiddleCircleBehaviour(TopDownEntity entity)
     {
+        Vector3 pushDirection = (entity.transform.position - transform.position).normalized;
+        
+        entity.GetComponent<Rigidbody>().AddForce(pushDirection * pushPowerMiddleCircle, ForceMode.Impulse);
         entity.ChangeLife((entity.GetLifeMax()/-2));
     }
     

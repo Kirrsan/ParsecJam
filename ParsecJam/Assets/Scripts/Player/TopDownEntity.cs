@@ -55,7 +55,8 @@ public class TopDownEntity : MonoBehaviour
     [Header("Animations")]
     public Animator _anim;
     private bool _isFalling = false;
-    
+
+    [SerializeField] private float strafeOffset;
 
     
     private void Awake()
@@ -277,6 +278,29 @@ public class TopDownEntity : MonoBehaviour
                 _velocity -= frictionToApply * frictionDir;
             }
         }
+        
+
+        float angle = Vector2.SignedAngle(_orientDir.normalized, _moveDir);
+        Debug.Log(angle);
+
+        if (angle > 90 - strafeOffset && angle < 90 + strafeOffset)
+        {
+            _anim.SetBool("StrafeLeft", true);  
+        }
+        else
+        {
+            _anim.SetBool("StrafeLeft", false);
+        }
+        
+        if (angle > -90 - strafeOffset && angle < -90 + strafeOffset)
+        {
+            _anim.SetBool("StrafeRight", true);
+        }
+        else
+        {
+            _anim.SetBool("StrafeRight", false);
+        }
+        
         _anim.SetFloat("Speed", _velocity.magnitude);
     }
     #endregion

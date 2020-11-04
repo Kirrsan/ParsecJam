@@ -1077,6 +1077,7 @@ MonoBehaviour:
   _headSpawner: {fileID: 9030137513745988305}
   _maxHeadsOnScene: 5
   _anim: {fileID: 2116116718}
+  strafeOffset: 30
 --- !u!114 &4684628824359040263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,6 +1094,9 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 6474714074037915856, guid: b6df08dcc1926974aa2b747e2f3e802f,
     type: 3}
   _shootRate: 0.3
+  _shootCapacityMax: 10
+  _shootRecoveryRate: 0.2
+  _debugFillEachCase: 0
 --- !u!114 &4684628824359040283
 MonoBehaviour:
   m_ObjectHideFlags: 0

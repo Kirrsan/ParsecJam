@@ -91,7 +91,12 @@ public class TopDownController : MonoBehaviour
             }
             if (_rewiredPlayer[0].GetButton("Shoot"))
             {
+                players[0].shootFunc.SetIsShooting(true);
                 players[0].shootFunc.ShootBullet();
+            }
+            if (_rewiredPlayer[0].GetButtonUp("Shoot"))
+            {
+                players[0].shootFunc.SetIsShooting(false);
             }
             if (_rewiredPlayer[0].GetButtonDown("PickUp"))
             {
@@ -129,7 +134,12 @@ public class TopDownController : MonoBehaviour
             }
             if (_rewiredPlayer[1].GetButton("Shoot"))
             {
+                players[1].shootFunc.SetIsShooting(true);
                 players[1].shootFunc.ShootBullet();
+            }
+            if (_rewiredPlayer[1].GetButtonUp("Shoot"))
+            {
+                players[1].shootFunc.SetIsShooting(false);
             }
             if (_rewiredPlayer[1].GetButtonDown("PickUp"))
             {

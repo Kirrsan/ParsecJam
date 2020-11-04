@@ -1059,19 +1059,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27a0d58f8abecb48a569e88daf16e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 40
-  _moveSpeedMax: 15
-  _friction: 30
-  _turnFriction: 35
+  _acceleration: 100
+  _moveSpeedMax: 10
+  _friction: 150
+  _turnFriction: 100
   _dashDuration: 0.3
-  _dashCooldown: 1.7
+  _dashCooldown: 3
   _dashspeed: 25
   _dashCountdown: -1
   _visualObj: {fileID: 2458999731093726964}
   shootFunc: {fileID: 0}
   _playerDeathTime: 30
   _isDead: 0
-  _lifeMax: 15
+  _lifeMax: 30
   powerBehaviour: {fileID: 0}
   _head: {fileID: 8721025715755847715, guid: 4fb917bb6be84ec44a06908d76f83fcf, type: 3}
   _headSpawner: {fileID: 9030137513745988305}
@@ -1093,10 +1093,12 @@ MonoBehaviour:
   _bulletSpawner: {fileID: 4684628823947470408}
   _bulletPrefab: {fileID: 6474714074037915856, guid: b6df08dcc1926974aa2b747e2f3e802f,
     type: 3}
-  _shootRate: 0.3
-  _shootCapacityMax: 10
-  _shootRecoveryRate: 0.2
-  _debugFillEachCase: 0
+  _shootRate: 0.1
+  _shootCapacityMax: 5
+  _shootRecoveryRate: 0.5
+  _shootReloadRate: 0.75
+  _capacityLooseRate: 10
+  _amountStopReload: 2.5
 --- !u!114 &4684628824359040283
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -151,7 +151,18 @@ public class TopDownEntity : MonoBehaviour
     {
         if (_dashTimer >= _dashCooldown)
         {
-            _dashDir = _velocity.normalized;
+            if (_moveDir != Vector2.zero)
+            {
+                _dashDir = _velocity.normalized;
+            }
+            else if (_orientDir == Vector2.zero)
+            {
+                _dashDir = Vector2.up;
+            }
+            else
+            {
+                _dashDir = _orientDir;
+            }
             _dashCountdown = _dashDuration;
             _isDashing = true;
 
@@ -170,7 +181,6 @@ public class TopDownEntity : MonoBehaviour
             _isDashing = false;
             if (_moveDir != Vector2.zero)
             {
-
                 _velocity = _velocity.normalized * _moveSpeedMax;
             }
             else

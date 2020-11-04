@@ -8,7 +8,7 @@ public class DeathFall : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        other.transform.GetComponent<TopDownEntity>().SetIsFalling(false);
+
         int winnerIndex = LevelManager.instance.GetOtherPlayer(other.transform.GetComponent<TopDownEntity>().GetIndex());
         other.GetComponent<Rigidbody>().velocity = Vector3.zero;
 

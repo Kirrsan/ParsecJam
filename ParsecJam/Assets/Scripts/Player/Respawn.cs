@@ -27,5 +27,6 @@ public class Respawn : MonoBehaviour
         {
             AudioManager.instance.Play("PlayerSpawn");
         }
+        GetComponent<TopDownEntity>().SetIsFalling(false);
     }
 }

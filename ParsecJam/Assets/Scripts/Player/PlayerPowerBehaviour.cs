@@ -84,7 +84,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
 
     private void UseShield()
     {
-        AudioManager.instance.Play("ShiedlDrop");
+        AudioManager.instance.Play("ShieldDrop");
         Shield _currentShield = Instantiate(_shieldPrefab, _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
         _currentShield.transform.rotation = _shieldSpawner.rotation;
         _currentShield.SetPlayerProtected(_playerEntity.GetIndex());

@@ -72,6 +72,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
         }
         else
         {
+            AudioManager.instance.Play("Mine");
             _currentMine.TriggerPower();
             Destroy(_currentMine.gameObject);
             _currentMine = null;
@@ -83,6 +84,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
 
     private void UseShield()
     {
+        AudioManager.instance.Play("ShiedlDrop");
         Shield _currentShield = Instantiate(_shieldPrefab, _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
         _currentShield.transform.rotation = _shieldSpawner.rotation;
         _currentShield.SetPlayerProtected(_playerEntity.GetIndex());

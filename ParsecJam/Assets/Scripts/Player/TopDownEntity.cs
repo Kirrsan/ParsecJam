@@ -44,13 +44,15 @@ public class TopDownEntity : MonoBehaviour
     [HideInInspector] public PlayerPowerBehaviour powerBehaviour;
     private bool _canPickUpSomething = false;
     private PickUpPower _pickUp;
-
+    
     [Header("Death Head")]
     [SerializeField] private GameObject _head;
     [SerializeField] private GameObject _headSpawner;
     [SerializeField] private int _maxHeadsOnScene;
     private int _currentHeadIndex = 0;
     private GameObject[] _headList;
+    private bool _isFalling = false;
+    
 
     private void Awake()
     {
@@ -96,6 +98,10 @@ public class TopDownEntity : MonoBehaviour
             {
                 _dashTimer += Time.deltaTime;
                 InterfaceManager.instance.FillCoolDown(_index, _dashTimer * (0.75f/_dashCooldown));
+                if(_dashTimer >= _dashCooldown)
+                {
+                    AudioManager.instance.Play("DashCooldownComplete");
+                }
             }
         }
     }
@@ -119,6 +125,20 @@ public class TopDownEntity : MonoBehaviour
             newPosition.x += _velocity.x * Time.fixedDeltaTime;
             newPosition.z += _velocity.y * Time.fixedDeltaTime;
             transform.position = newPosition;
+
+            if(transform.position.y <= -2 && !_isFalling)
+            {
+                _isFalling = true;
+                int rand = Random.Range(0, 16);
+                if (rand == 9)
+                {
+                    AudioManager.instance.Play("WillScream");
+                }
+                else
+                {
+                    AudioManager.instance.Play("PlayerFall");
+                }
+            }
         }
     }
 
@@ -128,6 +148,7 @@ public class TopDownEntity : MonoBehaviour
         {
             if (_canPickUpSomething)
             {
+                AudioManager.instance.Play("PowerPickUp");
                 _canPickUpSomething = false;
                 powerBehaviour.SetPower(_pickUp.GivePower());
                 Destroy(_pickUp.gameObject);
@@ -158,6 +179,8 @@ public class TopDownEntity : MonoBehaviour
     {
         if (_dashTimer >= _dashCooldown)
         {
+            AudioManager.instance.Play("DashWind");
+            AudioManager.instance.Play("DashGroan");
             if (_moveDir != Vector2.zero)
             {
                 _dashDir = _velocity.normalized;
@@ -260,11 +283,23 @@ public class TopDownEntity : MonoBehaviour
         InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
         if (_life <= 0)
         {
+            int rand = Random.Range(0, 16);
+            if(rand == 9)
+            {
+                AudioManager.instance.Play("WillScream");
+            }
+            else
+            {
+                AudioManager.instance.Play("DeathSound");
+            }
             _isDead = true;
+
             SpawnHead();
-            LevelManager.instance.RespawnPlayers();
+            LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
             ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
+            return;
         }
+        AudioManager.instance.Play("PlayerHit");
     }
 
     private void SpawnHead()
@@ -291,8 +326,9 @@ public class TopDownEntity : MonoBehaviour
 
     public void Kill(int ennemyIndex)
     {
+        AudioManager.instance.Play("DeathSound");
         _isDead = true;
-        LevelManager.instance.RespawnPlayers();
+        LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
         ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
     }
 
@@ -320,5 +356,10 @@ public class TopDownEntity : MonoBehaviour
     public bool GetIsDead()
     {
         return _isDead;
+    }
+
+    public void SetIsFalling(bool value)
+    {
+        _isFalling = value;
     }
 }

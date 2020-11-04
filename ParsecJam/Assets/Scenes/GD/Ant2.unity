@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 199393773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -18.459526, y: 13.049063, z: -12.4839325}
-  m_LocalScale: {x: 15.622812, y: 1, z: 1.475}
+  m_LocalScale: {x: 15.622812, y: 1.4125, z: 1.475}
   m_Children: []
   m_Father: {fileID: 85964188}
   m_RootOrder: 5
@@ -2282,6 +2282,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _dashspeed
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684628824359040263, guid: f3ec4d60cfd592a40b8a2b17530e52af,
+        type: 3}
+      propertyPath: _shootRate
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3ec4d60cfd592a40b8a2b17530e52af, type: 3}

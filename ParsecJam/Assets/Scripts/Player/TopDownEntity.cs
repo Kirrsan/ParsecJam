@@ -51,9 +51,13 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private int _maxHeadsOnScene;
     private int _currentHeadIndex = 0;
     private GameObject[] _headList;
+    
+    [Header("Animations")]
+    public Animator _anim;
     private bool _isFalling = false;
     
 
+    
     private void Awake()
     {
         shootFunc = GetComponent<Shoot>();
@@ -149,6 +153,7 @@ public class TopDownEntity : MonoBehaviour
             if (_canPickUpSomething)
             {
                 AudioManager.instance.Play("PowerPickUp");
+                _anim.SetTrigger("PickupItem");
                 _canPickUpSomething = false;
                 powerBehaviour.SetPower(_pickUp.GivePower());
                 Destroy(_pickUp.gameObject);
@@ -258,8 +263,6 @@ public class TopDownEntity : MonoBehaviour
 
             Vector2 frictionDir = _velocity.normalized;
             _velocity -= frictionDir * turnfrictionWithRatio * Time.fixedDeltaTime;
-
-            
         }
         else if (_velocity!= Vector2.zero)
         {
@@ -274,6 +277,7 @@ public class TopDownEntity : MonoBehaviour
                 _velocity -= frictionToApply * frictionDir;
             }
         }
+        _anim.SetFloat("Speed", _velocity.magnitude);
     }
     #endregion
 
@@ -283,6 +287,7 @@ public class TopDownEntity : MonoBehaviour
         InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
         if (_life <= 0)
         {
+            _anim.SetBool("Die", true);
             int rand = Random.Range(0, 16);
             if(rand == 9)
             {
@@ -326,6 +331,7 @@ public class TopDownEntity : MonoBehaviour
 
     public void Kill(int ennemyIndex)
     {
+        _anim.SetBool("Die", true);
         AudioManager.instance.Play("DeathSound");
         _isDead = true;
         LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);

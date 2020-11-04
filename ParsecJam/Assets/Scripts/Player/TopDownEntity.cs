@@ -293,10 +293,14 @@ public class TopDownEntity : MonoBehaviour
 
     public void ChangeLife(float lifeToLoose)
     {
-        _life += lifeToLoose;
-        InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
-        if (_life <= 0)
+        if (!_isDead)
         {
+            _life += lifeToLoose;
+            InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
+        }
+        if (_life <= 0 && !_isDead)
+        {
+            _isDead = true;
             _anim.SetBool("Die", true);
             int rand = Random.Range(0, 16);
             if(rand == 9)
@@ -307,7 +311,6 @@ public class TopDownEntity : MonoBehaviour
             {
                 AudioManager.instance.Play("DeathSound");
             }
-            _isDead = true;
 
             SpawnHead();
             LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
@@ -344,6 +347,7 @@ public class TopDownEntity : MonoBehaviour
         _anim.SetBool("Die", true);
         AudioManager.instance.Play("DeathSound");
         _isDead = true;
+        SpawnHead();
         LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
         ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
     }

@@ -129,6 +129,10 @@ public class TopDownController : MonoBehaviour
             {
                 players[1].Pickup();
             }
+            if (_rewiredPlayer[1].GetButtonDown("Power"))
+            {
+                players[1].powerBehaviour.UsePower();
+            }
             #endregion
         }
 

@@ -85,7 +85,7 @@ public class TopDownController : MonoBehaviour
 
             players[0].Move(moveDir, _aimMoveDir[0]);
 
-            if (_rewiredPlayer[0].GetButtonDown("Dash"))
+            if (_rewiredPlayer[0].GetButtonUp("Dash"))
             {
                 players[0].Dash();
             }

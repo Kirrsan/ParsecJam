@@ -29,7 +29,11 @@ public class Mine : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Wall"))
                 {
-                    break;
+                    float distanceToWall = CalculateDistance(hit.transform);
+                    if (distanceToWall < distanceToPlayer)
+                    {
+                        break;
+                    }
                 }
             }
             if (distanceToPlayer < innerCircleDistance * innerCircleDistance)

@@ -37,6 +37,9 @@ public class BulletBehaviour : MonoBehaviour
             {
                 TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
                 otherPlayer.ChangeLife(-1);
+            }
+            else
+            {
                 return;
             }
         }

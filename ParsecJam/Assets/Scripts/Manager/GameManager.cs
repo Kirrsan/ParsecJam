@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
 
     public State state;
     public System.Action onStateChange;
+    public bool isPlaying;
 
     private void Awake() {
         if (instance != null && instance != this) {
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour {
     // Start is called before the first frame update
     private void Start() {
         ChangeState(State.INGAME);
+        isPlaying = true;
     }
 
     // Update is called once per frame
@@ -38,6 +40,14 @@ public class GameManager : MonoBehaviour {
 
     public void ChangeState(State newState) {
         state = newState;
+        if(state == State.INGAME)
+        {
+            isPlaying = true;
+        }
+        else
+        {
+            isPlaying = false;
+        }
         if (onStateChange != null) onStateChange.Invoke();
     }
 

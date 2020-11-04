@@ -10,8 +10,6 @@ public class TopDownController : MonoBehaviour
 
     private Vector2[] _aimMoveDir;
 
-    private bool _isPlaying;
-
     private void Awake()
     {
         _rewiredPlayer = new Player[players.Length];
@@ -44,26 +42,12 @@ public class TopDownController : MonoBehaviour
                 LevelManager.instance.players[i] = players[i];
             }
         };
-
-        GameManager.instance.onStateChange += () =>
-        {
-            if (GameManager.instance.state != State.INGAME)
-            {
-                _isPlaying = false;
-            }
-            else
-            {
-                _isPlaying = true;
-            }
-        };
-
-        _isPlaying = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             #region Player1
             float dirX = _rewiredPlayer[0].GetAxis("MoveX");

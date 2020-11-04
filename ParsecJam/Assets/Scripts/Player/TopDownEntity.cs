@@ -26,8 +26,6 @@ public class TopDownEntity : MonoBehaviour
     private bool _isDashing = false;
     private float _dashTimer;
 
-    private bool _isPlaying = false;
-
     [SerializeField] private GameObject _visualObj;
     [HideInInspector] public Shoot shootFunc;
 
@@ -68,21 +66,9 @@ public class TopDownEntity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameManager.instance.onStateChange += () =>
-        {
-            if(GameManager.instance.state != State.INGAME)
-            {
-                _isPlaying = false;
-            }
-            else
-            {
-                _isPlaying = true;
-            }
-        };
 
         _dashTimer = _dashCooldown;
         _life = _lifeMax;
-        _isPlaying = true;
         _headList = new GameObject[_maxHeadsOnScene];
     }
 
@@ -97,7 +83,7 @@ public class TopDownEntity : MonoBehaviour
 
     private void Update()
     {
-        if (_isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             if (_dashTimer < _dashCooldown)
             {
@@ -114,7 +100,7 @@ public class TopDownEntity : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             if (_isDashing)
             {
@@ -149,7 +135,7 @@ public class TopDownEntity : MonoBehaviour
 
     public void Pickup()
     {
-        if (_isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             if (_canPickUpSomething)
             {

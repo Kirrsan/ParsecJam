@@ -16,8 +16,6 @@ public class LevelManager : MonoBehaviour
 
     public System.Action onInstanceCreated;
 
-    private bool _isPlaying;
-
     public List<Shield> shieldList = new List<Shield>();
 
     public float respawnTimeBulletKill = 1;
@@ -42,28 +40,13 @@ public class LevelManager : MonoBehaviour
 
         _levelDesigns[currentLevelDesign].Activate();
 
-        GameManager.instance.onStateChange += () =>
-        {
-            if (GameManager.instance.state != State.INGAME)
-            {
-                _isPlaying = false;
-            }
-            else
-            {
-                _isPlaying = true;
-            }
-        };
-
         roundTimer = _roundDuration;
-
-
-        _isPlaying = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_isPlaying)
+        if (GameManager.instance.isPlaying)
         {
             roundTimer -= Time.deltaTime;
             if (roundTimer <= 0)
@@ -80,14 +63,13 @@ public class LevelManager : MonoBehaviour
 
     public void RespawnPlayers(float respawnTime)
     {
+        GameManager.instance.isPlaying = false;
         Respawn respawn;
 
         for (int i = 0; i < players.Length; i++)
         {
             respawn = players[i].GetComponent<Respawn>();
             respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(respawnTime));
-
-            players[i].SetLife(players[i].GetLifeMax());
         }
     }
 

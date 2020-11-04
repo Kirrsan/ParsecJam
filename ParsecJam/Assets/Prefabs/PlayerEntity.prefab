@@ -1071,7 +1071,7 @@ MonoBehaviour:
   shootFunc: {fileID: 0}
   _playerDeathTime: 30
   _isDead: 0
-  _lifeMax: 30
+  _lifeMax: 100
   powerBehaviour: {fileID: 0}
   _head: {fileID: 8721025715755847715, guid: 4fb917bb6be84ec44a06908d76f83fcf, type: 3}
   _headSpawner: {fileID: 9030137513745988305}
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   _shootCapacityMax: 5
   _shootRecoveryRate: 0.5
   _shootReloadRate: 0.75
-  _capacityLooseRate: 10
+  _capacityLooseRate: 20
   _amountStopReload: 2.5
 --- !u!114 &4684628824359040283
 MonoBehaviour:

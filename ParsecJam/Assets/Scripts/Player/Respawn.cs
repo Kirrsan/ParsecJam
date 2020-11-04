@@ -31,5 +31,7 @@ public class Respawn : MonoBehaviour
         }
         entity.SetIsFalling(false);
         entity._anim.SetBool("Die", false);
+        entity.SetLife(entity.GetLifeMax());
+        GameManager.instance.isPlaying = true;
     }
 }

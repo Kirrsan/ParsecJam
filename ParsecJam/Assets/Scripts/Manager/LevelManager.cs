@@ -84,7 +84,7 @@ public class LevelManager : MonoBehaviour
             respawn = players[i].GetComponent<Respawn>();
             respawn.StartCoroutine(respawn.PlayerDeathAndRespawn(Respawn.respawnTimeBulletKill));
 
-            players[i].ChangeLife(players[i].GetLifeMax());
+            players[i].SetLife(players[i].GetLifeMax());
         }
     }
 

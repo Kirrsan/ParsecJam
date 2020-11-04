@@ -43,6 +43,7 @@ public class ScoreManager : MonoBehaviour
     {
         _scores[index] += 1;
         _scoreTexts[index].text = _scores[index].ToString();
+        _scoreTexts[index].transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public string GetWinner()

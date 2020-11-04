@@ -260,6 +260,13 @@ public class TopDownEntity : MonoBehaviour
     {
         return _life;
     }
+
+    public void SetLife(float newLife)
+    {
+        _life = newLife;
+        InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
+    }
+
     public float GetLifeMax()
     {
         return _lifeMax;

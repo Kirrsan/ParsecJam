@@ -68,7 +68,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
         if (!_mineSetUp)
         {
             _mineSetUp = true;
-            _currentMine = Instantiate(_minePrefab, _mineSpawner.position, Quaternion.Euler(0, 0, 90)).GetComponent<Mine>();
+            _currentMine = Instantiate(_minePrefab, _mineSpawner.position, Quaternion.identity).GetComponent<Mine>();
         }
         else
         {

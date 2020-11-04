@@ -181,3 +181,10 @@ MonoBehaviour:
     priority: 50
     loop: 0
     source: {fileID: 0}
+  - clipName: Music
+    clip:
+    - {fileID: 8300000, guid: b64efe8d05cb2524fa41238dac09a681, type: 3}
+    volume: 1
+    priority: 256
+    loop: 1
+    source: {fileID: 0}

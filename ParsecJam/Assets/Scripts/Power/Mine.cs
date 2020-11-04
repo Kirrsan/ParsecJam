@@ -81,11 +81,7 @@ public class Mine : MonoBehaviour
 
     private void Update()
     {
-        Debug.DrawRay(LevelManager.instance.players[0].transform.position, this.transform.position - LevelManager.instance.players[0].transform.position, Color.green, mineMaxRadius);
-        //if (Input.GetKeyDown(KeyCode.Y))
-        //{
-        //    TriggerPower();
-        //}
+
     }
 
     #region Shield

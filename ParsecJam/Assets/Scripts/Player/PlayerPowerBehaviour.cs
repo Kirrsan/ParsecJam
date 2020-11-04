@@ -33,6 +33,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
     public void SetPower(Power newPower)
     {
         _currentPower = newPower;
+        InterfaceManager.instance.ChangePowerIcon(_playerEntity.GetIndex(), _currentPower);
     }
     public Power GetPower()
     {
@@ -76,6 +77,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
             _currentMine = null;
             _mineSetUp = false;
             _currentPower = Power.None;
+            InterfaceManager.instance.ChangePowerIcon(_playerEntity.GetIndex(), _currentPower);
         }
     }
 
@@ -85,6 +87,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
         _currentShield.transform.rotation = _shieldSpawner.rotation;
         _currentShield.SetPlayerProtected(_playerEntity.GetIndex());
         _currentPower = Power.None;
+        InterfaceManager.instance.ChangePowerIcon(_playerEntity.GetIndex(), _currentPower);
     }
 
 }

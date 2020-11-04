@@ -22,6 +22,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Text _timerText;
     [SerializeField] private Image[] _dashCoolDown;
     [SerializeField] private Image[] _healthBar;
+    [SerializeField] private Image[] _powerImage;
+    [SerializeField] private Sprite[] _powerIcons;
 
 
     private void Awake()
@@ -84,6 +86,35 @@ public class InterfaceManager : MonoBehaviour
     public void AdjustLifeBar(int index, float fillAmount)
     {
         _healthBar[index].fillAmount = fillAmount;
+    }
+
+    public void ChangePowerIcon(int player, Power power)
+    {
+        switch (power)
+        {
+            case Power.None:
+                _powerImage[player].gameObject.SetActive(false);
+                break;
+            case Power.Mine:
+                _powerImage[player].sprite = _powerIcons[0];
+                _powerImage[player].gameObject.SetActive(true);
+                break;
+            case Power.Shield:
+                _powerImage[player].sprite = _powerIcons[1];
+                _powerImage[player].gameObject.SetActive(true);
+                break;
+            case Power.Rocket:
+                _powerImage[player].sprite = _powerIcons[2];
+                _powerImage[player].gameObject.SetActive(true);
+                break;
+            case Power.Cancel:
+                _powerImage[player].sprite = _powerIcons[3];
+                _powerImage[player].gameObject.SetActive(true);
+                break;
+            default:
+                print("what's all this then ?");
+                break;
+        }
     }
 
     private void SetUpWinPanel()

@@ -125,6 +125,7 @@ public class TopDownEntity : MonoBehaviour
                 powerBehaviour.SetPower(_pickUp.GivePower());
                 Destroy(_pickUp.gameObject);
                 _pickUp = null;
+
             }
         }
     }

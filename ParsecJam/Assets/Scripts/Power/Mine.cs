@@ -29,10 +29,7 @@ public class Mine : MonoBehaviour
             {
                 if (hit.collider.gameObject.CompareTag("Wall"))
                 {
-                    if (hit.collider.GetComponent<Shield>().GetPlayerProtected() == i)
-                    {
-                        break;
-                    }
+                    break;
                 }
             }
             if (distanceToPlayer < innerCircleDistance * innerCircleDistance)

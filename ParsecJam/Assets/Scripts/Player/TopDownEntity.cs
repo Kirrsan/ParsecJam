@@ -45,6 +45,12 @@ public class TopDownEntity : MonoBehaviour
     private bool _canPickUpSomething = false;
     private PickUpPower _pickUp;
 
+    [Header("Death Head")]
+    [SerializeField] private GameObject _head;
+    [SerializeField] private GameObject _headSpawner;
+    [SerializeField] private int _maxHeadsOnScene;
+    private int _currentHeadIndex = 0;
+    private GameObject[] _headList;
 
     private void Awake()
     {
@@ -70,6 +76,7 @@ public class TopDownEntity : MonoBehaviour
         _dashTimer = _dashCooldown;
         _life = _lifeMax;
         _isPlaying = true;
+        _headList = new GameObject[_maxHeadsOnScene];
     }
 
     public void SetIndex(int newIndex)
@@ -244,8 +251,31 @@ public class TopDownEntity : MonoBehaviour
         if (_life <= 0)
         {
             _isDead = true;
+            SpawnHead();
             LevelManager.instance.RespawnPlayers();
             ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
+        }
+    }
+
+    private void SpawnHead()
+    {
+        if (_headList[_maxHeadsOnScene - 1] != null)
+        {
+            Destroy(_headList[_currentHeadIndex]);
+            GameObject head = GameObject.Instantiate(_head, _headSpawner.transform.position , Quaternion.identity);
+            _headList[_currentHeadIndex] = head;
+            _currentHeadIndex++;
+        }
+        else
+        {
+            GameObject head = GameObject.Instantiate(_head, _headSpawner.transform.position , Quaternion.identity);
+            _headList[_currentHeadIndex] = head;
+            _currentHeadIndex++;
+        }
+
+        if (_currentHeadIndex >= _maxHeadsOnScene)
+        {
+            _currentHeadIndex = 0;
         }
     }
 

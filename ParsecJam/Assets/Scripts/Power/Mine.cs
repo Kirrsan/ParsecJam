@@ -28,7 +28,7 @@ public class Mine : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(players[i].transform.position, transform.position - players[i].transform.position, out hit, mineMaxRadius))
             {
-                if (hit.collider.gameObject.CompareTag("Wall"))
+                if (hit.collider.gameObject.CompareTag("Shield"))
                 {
                     float distanceToWall = CalculateDistance(hit.transform);
                     if (distanceToWall < distanceToPlayer)

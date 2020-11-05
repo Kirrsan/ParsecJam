@@ -410,4 +410,15 @@ public class TopDownEntity : MonoBehaviour
     {
         _isFalling = value;
     }
+
+    public Vector2 GetVelocity()
+    {
+        return _velocity;
+    }
+
+    public void SetVelocity(Vector2 newVelocity)
+    {
+        _velocity = newVelocity;
+    }
+
 }

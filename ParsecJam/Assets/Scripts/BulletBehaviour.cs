@@ -53,7 +53,7 @@ public class BulletBehaviour : MonoBehaviour
                 return;
             }
         }
-        else if (other.gameObject.CompareTag("Wall"))
+        else if (other.gameObject.CompareTag("Shield"))
         {
             other.GetComponent<Shield>().LooseLife(1);
         }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public enum Power
 {
@@ -15,10 +12,15 @@ public enum Power
 public class PickUpPower : MonoBehaviour
 {
 
-    [SerializeField]private Power powerToGive;    
-    
-    
-    
+    [SerializeField] private Power _powerToGive;
+    [SerializeField] private GameObject[] _powerObject;
+    private Animation _animation;
+
+    private void Start()
+    {
+        _animation = GetComponent<Animation>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
@@ -37,12 +39,18 @@ public class PickUpPower : MonoBehaviour
 
     public Power GivePower()
     {
-        return powerToGive;
+        return _powerToGive;
     }
 
     public void SetPower(Power power)
     {
-        powerToGive = power;
+        _powerToGive = power;
+        _powerObject[(int)power - 1].SetActive(true);
+    }
+
+    public void StartLevitating()
+    {
+        _animation.Play("PickUp");
     }
 
 }

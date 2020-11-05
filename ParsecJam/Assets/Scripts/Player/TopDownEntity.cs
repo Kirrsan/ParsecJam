@@ -157,6 +157,14 @@ public class TopDownEntity : MonoBehaviour
                     AudioManager.instance.Play("PlayerFall");
                 }
             }
+            if (transform.position.y < -20 || transform.position.x < -125 || transform.position.x > 125 || transform.position.z < -40 || transform.position.z > 40)
+            {
+                int winnerIndex = LevelManager.instance.GetOtherPlayer(transform.GetComponent<TopDownEntity>().GetIndex());
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeFallDeath);
+                ScoreManager.instance.AddToScore(winnerIndex);
+            }
             else if(transform.position.y > _initialYPosition - 0.5f)
             {
                 _isFalling = false;

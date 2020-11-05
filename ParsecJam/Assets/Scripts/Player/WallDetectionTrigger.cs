@@ -20,7 +20,7 @@ public class WallDetectionTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") && other.gameObject.CompareTag("Shield"))
         {
             _isInWall = true;
         }
@@ -28,17 +28,15 @@ public class WallDetectionTrigger : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") && other.gameObject.CompareTag("Shield"))
         {
-            print("miaou");
-
             _isInWall = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Wall"))
+        if (other.gameObject.CompareTag("Wall") && other.gameObject.CompareTag("Shield"))
         {
             _isInWall = false;
         }

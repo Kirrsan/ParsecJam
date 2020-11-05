@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class Mine : MonoBehaviour
@@ -14,12 +15,18 @@ public class Mine : MonoBehaviour
     public bool _isMinePlaced = false;
 
     [SerializeField] private Text _playerText;
+    [SerializeField] private GameObject _mine;
+    [SerializeField] private GameObject _mineFX;
+    [SerializeField] private ParticleSystem _mineFXClouds;
 
     private int _playersInInner = 0;
     private TopDownEntity _playerInInner;
 
     public void TriggerPower()
     {
+        _mine.SetActive(false);
+        _mineFX.SetActive(false);
+        _mineFX.SetActive(true);
         TopDownEntity[] players = LevelManager.instance.players;
 
         for (int i = 0; i < players.Length; i++)
@@ -79,6 +86,8 @@ public class Mine : MonoBehaviour
 
             }
         }
+
+        StartCoroutine(WaitAndDestroy());
     }
 
     private void Update()
@@ -138,6 +147,12 @@ public class Mine : MonoBehaviour
     public void SetPlayerText(int playerIndex)
     {
         _playerText.text = "P" + playerIndex.ToString();
+    }
+
+    private IEnumerator WaitAndDestroy()
+    {
+        yield return new WaitForSeconds(_mineFXClouds.main.duration);
+        Destroy(gameObject);
     }
     
 }

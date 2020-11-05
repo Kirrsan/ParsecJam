@@ -9,6 +9,7 @@ public class Shoot : MonoBehaviour
     [Header("Bullet Settings")]
     [SerializeField] private GameObject _bulletSpawner;
     [SerializeField] private GameObject _bulletPrefab;
+    [SerializeField] private GameObject[] _shotFX;
 
     [Header("Pooler")]
     [SerializeField] private List<GameObject> _pooledBullets;
@@ -77,6 +78,9 @@ public class Shoot : MonoBehaviour
             if (bullet != null)
             {
                 AudioManager.instance.Play("Shot");
+                int rand = Random.Range(0, _shotFX.Length);
+                _shotFX[rand].SetActive(false);
+                _shotFX[rand].SetActive(true);
                 bullet.transform.position = _bulletSpawner.transform.position;
                 bullet.transform.rotation = _bulletSpawner.transform.rotation;
                 bullet.GetComponent<BulletBehaviour>().SetPlayerIndex(_index);

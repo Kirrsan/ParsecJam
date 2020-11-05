@@ -169,6 +169,14 @@ public class TopDownEntity : MonoBehaviour
         {
             if (_canPickUpSomething)
             {
+                if (powerBehaviour.GetPower() != Power.None)
+                {
+                    if (powerBehaviour.GetMineSetUp())
+                    {
+                        powerBehaviour.UsePower();
+                    }
+                }
+
                 AudioManager.instance.Play("PowerPickUp");
                 _anim.SetTrigger("PickupItem");
                 _canPickUpSomething = false;
@@ -183,11 +191,6 @@ public class TopDownEntity : MonoBehaviour
 
     public void SetPickable(PickUpPower pickable)
     {
-        if(powerBehaviour.GetPower() != Power.None)
-        {
-            return;
-        }
-        
         _canPickUpSomething = true;
         _pickUp = pickable;
     }
@@ -325,6 +328,7 @@ public class TopDownEntity : MonoBehaviour
     {
         if (!_isDead)
         {
+            InterfaceManager.instance.ChangeHealthBarColor(_index);
             _life += lifeToLoose;
             InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
             int rand = Random.Range(0, _hitFX.Length);

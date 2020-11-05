@@ -28,6 +28,7 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image[] _shootBar;
     [SerializeField] private Image[] _powerImage;
     [SerializeField] private Sprite[] _powerIcons;
+    [SerializeField] private Text[] _powerName;
 
     private GameObject _lastSelectedGameObject;
 
@@ -62,6 +63,10 @@ public class InterfaceManager : MonoBehaviour
                 GoToWin();
             }
         };
+
+        for(int i = 0; i < _powerName.Length; i++)
+        {
+            _powerName[i].text = "";        }
 
         GoToGame();
     }
@@ -110,10 +115,12 @@ public class InterfaceManager : MonoBehaviour
 
     public void ChangePowerIcon(int player, Power power)
     {
+        _powerName[player].text = power.ToString();
         switch (power)
         {
             case Power.None:
                 _powerImage[player].gameObject.SetActive(false);
+                _powerName[player].text = "";
                 break;
             case Power.Mine:
                 _powerImage[player].sprite = _powerIcons[0];

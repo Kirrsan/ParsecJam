@@ -421,4 +421,9 @@ public class TopDownEntity : MonoBehaviour
         _velocity = newVelocity;
     }
 
+    public Vector2 GetOrientDir()
+    {
+        return _orientDir;
+    }
+
 }

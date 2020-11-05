@@ -27,6 +27,12 @@ public class EyesFollow : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private float _distanceMinToFollowPlayer = 3;
+    [SerializeField] private float _angleToFollowPlayer = 90;
+    [SerializeField] private bool _isClamped = true;
+    [SerializeField] private float _positiveAngleMin = 150;
+    [SerializeField] private float _positiveAngleMax = 175;
+    [SerializeField] private float _negativeAngleMin = -175;
+    [SerializeField] private float _negativeAngleMax = -150;
     private Transform _currentPlayerTarget;
     
     
@@ -63,11 +69,11 @@ public class EyesFollow : MonoBehaviour
             float player1Angle = Vector3.Angle(transform.position - players[0].transform.position , Vector3.forward);
             float player2Angle = Vector3.Angle(transform.position - players[1].transform.position, Vector3.forward);
 
-            if (player1Angle <= 90)
+            if (player1Angle <= _angleToFollowPlayer)
             {
                 distance = CalculateDistance(players[0].transform);
             }
-            if (player2Angle <= 90)
+            if (player2Angle <= _angleToFollowPlayer)
             {
                 distance2 = CalculateDistance(players[1].transform);
             }
@@ -122,13 +128,16 @@ public class EyesFollow : MonoBehaviour
                 _lastPlayerPosition = _currentPlayerTarget.transform.position;
 
                 float angle = Vector2.SignedAngle(Vector2.up, _lastPlayerPosition - _orbite.transform.position);
-                if (angle > 0)
+                if (_isClamped)
                 {
-                    angle = Mathf.Clamp(angle, 150, 175);
-                }
-                else
-                {
-                    angle = Mathf.Clamp(angle, -175, -150);
+                    if (angle > 0)
+                    {
+                        angle = Mathf.Clamp(angle, _positiveAngleMin, _positiveAngleMax);
+                    }
+                    else
+                    {
+                        angle = Mathf.Clamp(angle, _negativeAngleMin, _negativeAngleMax);
+                    }
                 }
                 _eyeAngle = _orbite.transform.eulerAngles;
                 _eyeAngle.y = -angle;

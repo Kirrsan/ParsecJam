@@ -22,8 +22,6 @@ public class WallDetectionTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Wall"))
         {
-            print("miaou");
-
             _isInWall = true;
         }
     }

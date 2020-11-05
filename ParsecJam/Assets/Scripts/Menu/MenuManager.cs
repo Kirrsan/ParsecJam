@@ -82,6 +82,8 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+
+    #region Buttons Funcions
     private void Play()
     {
         SceneManager.LoadScene(_sceneToLoad);
@@ -117,5 +119,6 @@ public class MenuManager : MonoBehaviour
 #endif
         Application.Quit();
     }
+    #endregion
 
 }

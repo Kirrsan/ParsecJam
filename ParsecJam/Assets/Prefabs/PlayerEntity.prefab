@@ -1092,6 +1092,7 @@ MonoBehaviour:
   _maxHeadsOnScene: 5
   _anim: {fileID: 2116116718}
   strafeOffset: 30
+  _gunCollider: {fileID: 1586989645862954089}
 --- !u!114 &4684628824359040263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,6 +1110,7 @@ MonoBehaviour:
     type: 3}
   _pooledBullets: []
   _amountBulletToPool: 15
+  shouldExpand: 1
   _shootRate: 0.1
   _shootCapacityMax: 5
   _shootRecoveryRate: 0.5

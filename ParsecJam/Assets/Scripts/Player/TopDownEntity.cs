@@ -55,6 +55,7 @@ public class TopDownEntity : MonoBehaviour
     private bool _isFalling = false;
 
     [SerializeField] private float strafeOffset;
+    [SerializeField] private BoxCollider _gunCollider;
 
     private float _initialYPosition;
     private bool _yInitialized = false;
@@ -107,8 +108,15 @@ public class TopDownEntity : MonoBehaviour
             }
             if(transform.position.y > _initialYPosition && _yInitialized)
             {
-                print("miaou");
                 transform.position = new Vector3(transform.position.x, _initialYPosition, transform.position.z);
+            }
+            if (_isFalling)
+            {
+                _gunCollider.enabled = false;
+            }
+            else
+            {
+                _gunCollider.enabled = true;
             }
         }
     }
@@ -133,7 +141,7 @@ public class TopDownEntity : MonoBehaviour
             newPosition.z += _velocity.y * Time.fixedDeltaTime;
             transform.position = newPosition;
 
-            if(transform.position.y <= -2 && !_isFalling)
+            if(transform.position.y <= _initialYPosition - 0.2f && !_isFalling)
             {
                 _isFalling = true;
                 int rand = Random.Range(0, 16);

@@ -187,6 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5621429043449850825}
+  - component: {fileID: 7127838011048941832}
   m_Layer: 0
   m_Name: DoubleWall
   m_TagString: Untagged
@@ -210,3 +211,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &7127838011048941832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7676261402380608899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.2280817, y: 3.4805636, z: 1.0133371}
+  m_Center: {x: -0.060012817, y: -0.25339055, z: -1.0068946}

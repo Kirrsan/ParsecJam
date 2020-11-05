@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477219817932c7744a9625166dfdada4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundDuration: 30
+  _roundDuration: 300
   roundTimer: 0
   players:
   - {fileID: 0}
@@ -696,6 +696,7 @@ MonoBehaviour:
   players:
   - {fileID: 0}
   - {fileID: 0}
+  _deadZone: 0
 --- !u!1001 &8983465868372488971
 PrefabInstance:
   m_ObjectHideFlags: 0

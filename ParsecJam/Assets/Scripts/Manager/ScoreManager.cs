@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     private float[] _scores;
     [SerializeField] private Text[] _scoreTexts;
 
+    public System.Action onInstanceCreated;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -25,6 +27,7 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (onInstanceCreated != null) onInstanceCreated.Invoke();
         _scores = new float[numberOfPlayers];
         for(int i = 0; i < _scores.Length; i++)
         {

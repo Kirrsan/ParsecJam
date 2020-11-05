@@ -15,6 +15,7 @@ public class Mine : MonoBehaviour
     public bool _isMinePlaced = false;
 
     [SerializeField] private Text _playerText;
+    [SerializeField] private GameObject _inputImage;
     [SerializeField] private GameObject _mine;
     [SerializeField] private GameObject _mineFX;
     [SerializeField] private ParticleSystem _mineFXClouds;
@@ -22,8 +23,21 @@ public class Mine : MonoBehaviour
     private int _playersInInner = 0;
     private TopDownEntity _playerInInner;
 
+
+    private void Start()
+    {
+        if(LevelManager.instance.numberOfMinesExploded < 4)
+        {
+            _inputImage.SetActive(true);
+        }
+        LevelManager.instance.mineList.Add(this);
+    }
+
     public void TriggerPower()
     {
+        _playerText.gameObject.SetActive(false);
+        _inputImage.SetActive(false);
+        LevelManager.instance.numberOfMinesExploded++;
         _mine.SetActive(false);
         _mineFX.SetActive(false);
         _mineFX.SetActive(true);

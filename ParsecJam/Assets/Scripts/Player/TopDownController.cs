@@ -21,14 +21,17 @@ public class TopDownController : MonoBehaviour
         }
         _aimMoveDir = new Vector2[players.Length];
 
-        ScoreManager.instance.numberOfPlayers = players.Length;
-
         if(LevelManager.instance != null)
         {
             for (int i = 0; i < players.Length; i++)
             {
                 LevelManager.instance.players[i] = players[i];
             }
+        }
+
+        if (ScoreManager.instance != null)
+        {
+            ScoreManager.instance.numberOfPlayers = players.Length;
         }
 
     }
@@ -42,6 +45,11 @@ public class TopDownController : MonoBehaviour
             {
                 LevelManager.instance.players[i] = players[i];
             }
+        };
+
+        ScoreManager.instance.onInstanceCreated += () =>
+        {
+            ScoreManager.instance.numberOfPlayers = players.Length;
         };
     }
 

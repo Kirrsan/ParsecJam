@@ -18,9 +18,12 @@ public class LevelManager : MonoBehaviour
     public System.Action onRespawnPlayers;
 
     public List<Shield> shieldList = new List<Shield>();
+    public List<Mine> mineList = new List<Mine>();
 
     public float respawnTimeBulletKill = 1;
     public float respawnTimeFallDeath = 1;
+
+    public int numberOfMinesExploded = 0;
 
     private void Awake()
     {
@@ -65,6 +68,7 @@ public class LevelManager : MonoBehaviour
     public void RespawnPlayers(float respawnTime)
     {
         if (onRespawnPlayers != null) onRespawnPlayers.Invoke();
+
         GameManager.instance.isPlaying = false;
         Respawn respawn;
 
@@ -86,5 +90,20 @@ public class LevelManager : MonoBehaviour
             }
         }
         return other;
+    }
+
+    public void ClearBonusList()
+    {
+
+        foreach (Mine mine in mineList)
+        {
+            Destroy(mine.gameObject);
+        }
+        foreach (Shield shield in shieldList)
+        {
+            Destroy(shield.gameObject);
+        }
+        mineList.Clear();
+        shieldList.Clear();
     }
 }

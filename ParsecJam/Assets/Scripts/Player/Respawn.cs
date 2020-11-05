@@ -28,6 +28,7 @@ public class Respawn : MonoBehaviour
         if (_currentPlayerIndex == 0)
         {
             AudioManager.instance.Play("PlayerSpawn");
+            LevelManager.instance.ClearBonusList();
         }
         entity.SetIsFalling(false);
         entity._anim.SetBool("Die", false);

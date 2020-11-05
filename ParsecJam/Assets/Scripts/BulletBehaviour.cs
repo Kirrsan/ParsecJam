@@ -43,10 +43,32 @@ public class BulletBehaviour : MonoBehaviour
         }
         if (other.gameObject.CompareTag("Player"))
         {
-            if (other.GetComponent<TopDownEntity>().GetIndex() != _playerIndex)
+            TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
+            if (otherPlayer.GetIndex() != _playerIndex)
             {
-                TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
                 otherPlayer.ChangeLife(-1);
+                Vector2 collisionPoint = other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position);
+                Vector2 currentAim = otherPlayer.GetOrientDir();
+                
+                float angle = Vector2.SignedAngle(currentAim.normalized, collisionPoint);
+
+                float offset = otherPlayer.hitOffset;
+                
+                if (angle > 90 - offset && angle < 90 + offset)
+                {
+                    otherPlayer._anim.SetTrigger("HitLeft");  
+                }
+        
+                if (angle > -90 - offset && angle < -90 + offset)
+                {
+                    otherPlayer._anim.SetTrigger("HitRight");
+                }
+                
+                if (angle > 0 - offset && angle < 0 + offset)
+                {
+                    otherPlayer._anim.SetTrigger("HitFront");
+                }
+
             }
             else
             {

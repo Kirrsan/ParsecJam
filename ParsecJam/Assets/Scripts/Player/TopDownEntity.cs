@@ -55,6 +55,7 @@ public class TopDownEntity : MonoBehaviour
     [Header("Animations")]
     public Animator _anim;
     private bool _isFalling = false;
+    public float hitOffset;
 
     [SerializeField] private float strafeOffset;
     [SerializeField] private BoxCollider _gunCollider;
@@ -296,8 +297,13 @@ public class TopDownEntity : MonoBehaviour
             }
         }
         
-
-        float angle = Vector2.SignedAngle(_orientDir.normalized, _moveDir);
+        
+        Vector2 vision = transform.GetChild(1).forward;
+        if (_orientDir != Vector2.zero)
+        {
+            vision = _orientDir;
+        }
+        float angle = Vector2.SignedAngle(vision.normalized, _moveDir);
 
         if (angle > 90 - strafeOffset && angle < 90 + strafeOffset)
         {
@@ -315,6 +321,15 @@ public class TopDownEntity : MonoBehaviour
         else
         {
             _anim.SetBool("StrafeRight", false);
+        }
+        
+        if (angle > 180 - strafeOffset && angle < 180 + strafeOffset)
+        {
+            _anim.SetBool("GoingBack", true);
+        }
+        else
+        {
+            _anim.SetBool("GoingBack", false);
         }
         
         _anim.SetFloat("Speed", _velocity.magnitude);
@@ -337,6 +352,9 @@ public class TopDownEntity : MonoBehaviour
             _deathFX.SetActive(false);
             _deathFX.SetActive(true);
             _anim.SetBool("Die", true);
+            shootFunc.ResetIsShooting();
+            LevelManager levelManager = LevelManager.instance;
+            levelManager.players[levelManager.GetOtherPlayer(_index)]._anim.SetTrigger("Dance");
             int rand = Random.Range(0, 16);
             if(rand == 9)
             {
@@ -348,8 +366,8 @@ public class TopDownEntity : MonoBehaviour
             }
 
             SpawnHead();
-            LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
-            ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
+            levelManager.RespawnPlayers(levelManager.respawnTimeBulletKill);
+            ScoreManager.instance.AddToScore(levelManager.GetOtherPlayer(_index));
             return;
         }
         AudioManager.instance.Play("PlayerHit");
@@ -382,6 +400,8 @@ public class TopDownEntity : MonoBehaviour
         _deathFX.SetActive(false);
         _deathFX.SetActive(true);
         _anim.SetBool("Die", true);
+        LevelManager.instance.players[LevelManager.instance.GetOtherPlayer(_index)]._anim.SetTrigger("Dance");
+        shootFunc.ResetIsShooting();
         AudioManager.instance.Play("DeathSound");
         _isDead = true;
         SpawnHead();
@@ -419,6 +439,13 @@ public class TopDownEntity : MonoBehaviour
     {
         _isFalling = value;
     }
+    
+
+
+    public Vector2 GetOrientDir()
+    {
+        return _orientDir;
+    }
 
     public Vector2 GetVelocity()
     {
@@ -429,10 +456,4 @@ public class TopDownEntity : MonoBehaviour
     {
         _velocity = newVelocity;
     }
-
-    public Vector2 GetOrientDir()
-    {
-        return _orientDir;
-    }
-
 }

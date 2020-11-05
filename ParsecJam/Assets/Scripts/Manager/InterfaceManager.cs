@@ -29,6 +29,8 @@ public class InterfaceManager : MonoBehaviour
     [SerializeField] private Image[] _powerImage;
     [SerializeField] private Sprite[] _powerIcons;
     [SerializeField] private Text[] _powerName;
+    [SerializeField] private Color _healthBarSecondColor;
+    private Color _healthBarOriginalColor;
 
     private GameObject _lastSelectedGameObject;
 
@@ -64,9 +66,12 @@ public class InterfaceManager : MonoBehaviour
             }
         };
 
+        _healthBarOriginalColor = _healthBar[0].color;
+
         for(int i = 0; i < _powerName.Length; i++)
         {
-            _powerName[i].text = "";        }
+            _powerName[i].text = "";
+        }
 
         GoToGame();
     }
@@ -106,6 +111,25 @@ public class InterfaceManager : MonoBehaviour
     public void AdjustLifeBar(int index, float fillAmount)
     {
         _healthBar[index].fillAmount = fillAmount;
+    }
+
+    public void ChangeHealthBarColor(int index)
+    {
+        if(_healthBar[index].color == _healthBarOriginalColor)
+        {
+            _healthBar[index].color = _healthBarSecondColor;
+            StartCoroutine(WaitAndGoToOriginalColor(index));
+        }
+        else
+        {
+            _healthBar[index].color = _healthBarOriginalColor;
+        }
+    }
+
+    private IEnumerator WaitAndGoToOriginalColor(int index)
+    {
+        yield return new WaitForSeconds(0.2f);
+        _healthBar[index].color = _healthBarOriginalColor;
     }
 
     public void AdjustShootBar(int index, float fillAmount)

@@ -157,6 +157,14 @@ public class TopDownEntity : MonoBehaviour
                     AudioManager.instance.Play("PlayerFall");
                 }
             }
+            if (transform.position.y < -20 || transform.position.x < -125 || transform.position.x > 125 || transform.position.z < -40 || transform.position.z > 40)
+            {
+                int winnerIndex = LevelManager.instance.GetOtherPlayer(transform.GetComponent<TopDownEntity>().GetIndex());
+                GetComponent<Rigidbody>().velocity = Vector3.zero;
+
+                LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeFallDeath);
+                ScoreManager.instance.AddToScore(winnerIndex);
+            }
             else if(transform.position.y > _initialYPosition - 0.5f)
             {
                 _isFalling = false;
@@ -170,6 +178,14 @@ public class TopDownEntity : MonoBehaviour
         {
             if (_canPickUpSomething)
             {
+                if (powerBehaviour.GetPower() != Power.None)
+                {
+                    if (powerBehaviour.GetMineSetUp())
+                    {
+                        powerBehaviour.UsePower();
+                    }
+                }
+
                 AudioManager.instance.Play("PowerPickUp");
                 _anim.SetTrigger("PickupItem");
                 _canPickUpSomething = false;
@@ -184,11 +200,6 @@ public class TopDownEntity : MonoBehaviour
 
     public void SetPickable(PickUpPower pickable)
     {
-        if(powerBehaviour.GetPower() != Power.None)
-        {
-            return;
-        }
-        
         _canPickUpSomething = true;
         _pickUp = pickable;
     }
@@ -340,6 +351,7 @@ public class TopDownEntity : MonoBehaviour
     {
         if (!_isDead)
         {
+            InterfaceManager.instance.ChangeHealthBarColor(_index);
             _life += lifeToLoose;
             InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
             int rand = Random.Range(0, _hitFX.Length);

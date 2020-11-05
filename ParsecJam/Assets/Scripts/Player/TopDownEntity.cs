@@ -141,7 +141,7 @@ public class TopDownEntity : MonoBehaviour
             newPosition.z += _velocity.y * Time.fixedDeltaTime;
             transform.position = newPosition;
 
-            if(transform.position.y <= _initialYPosition - 0.2f && !_isFalling)
+            if(transform.position.y <= _initialYPosition - 0.5f && !_isFalling)
             {
                 _isFalling = true;
                 int rand = Random.Range(0, 16);
@@ -153,6 +153,10 @@ public class TopDownEntity : MonoBehaviour
                 {
                     AudioManager.instance.Play("PlayerFall");
                 }
+            }
+            else if(transform.position.y > _initialYPosition - 0.5f)
+            {
+                _isFalling = false;
             }
         }
     }

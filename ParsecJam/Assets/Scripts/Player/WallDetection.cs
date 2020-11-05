@@ -30,7 +30,7 @@ public class WallDetection : MonoBehaviour
 
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") && collision.gameObject.CompareTag("Shield"))
         {
             _isOutOfCollision = true;
         }
@@ -38,7 +38,7 @@ public class WallDetection : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") && collision.gameObject.CompareTag("Shield"))
         {
             _isOutOfCollision = false;
             _contactPoint = -collision.contacts[0].normal;

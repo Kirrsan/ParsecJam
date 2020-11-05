@@ -16,7 +16,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
     private Mine _currentMine;
 
     [Header("Shield Settings")]
-    [SerializeField] private GameObject _shieldPrefab;
+    [SerializeField] private GameObject[] _shieldPrefab;
     [SerializeField] private Transform _shieldSpawner;
 
     // Start is called before the first frame update
@@ -86,7 +86,16 @@ public class PlayerPowerBehaviour : MonoBehaviour
     private void UseShield()
     {
         AudioManager.instance.Play("ShieldDrop");
-        Shield _currentShield = Instantiate(_shieldPrefab, _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
+        int rand = Random.Range(0, 11);
+        Shield _currentShield;
+        if (rand == 6)
+        {
+            _currentShield = Instantiate(_shieldPrefab[1], _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
+        }
+        else
+        {
+            _currentShield = Instantiate(_shieldPrefab[0], _shieldSpawner.position, Quaternion.identity).GetComponentInChildren<Shield>();
+        }
         _currentShield.transform.rotation = _shieldSpawner.rotation;
         _currentShield.SetPlayerProtected(_playerEntity.GetIndex());
         _currentPower = Power.None;

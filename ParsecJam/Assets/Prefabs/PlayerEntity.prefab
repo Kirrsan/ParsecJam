@@ -1170,7 +1170,6 @@ MonoBehaviour:
   _playerDeathTime: 30
   _isDead: 0
   _deathFX: {fileID: 4312995480267559141}
-  _deathBloodFX: {fileID: 0}
   _lifeMax: 10
   _hitFX:
   - {fileID: 1730212457860566635}
@@ -1240,8 +1239,9 @@ MonoBehaviour:
     type: 3}
   _mineSpawner: {fileID: 4684628824207825871}
   _mineFXprefab: {fileID: 150222, guid: 9f03f372adf02874cb666857a9f97abd, type: 3}
-  _shieldPrefab: {fileID: 5555169042591006585, guid: 217f7863e2d7cd04b8b33642e99d80bc,
-    type: 3}
+  _shieldPrefab:
+  - {fileID: 5026688883910478221, guid: ef4d11e745de0c840b4b9f57ed6cc444, type: 3}
+  - {fileID: 5555169042591006585, guid: 217f7863e2d7cd04b8b33642e99d80bc, type: 3}
   _shieldSpawner: {fileID: 582805568265666149}
 --- !u!54 &4684628824359040281
 Rigidbody:

@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private int currentLevelDesign = 0;
 
     public System.Action onInstanceCreated;
+    public System.Action onRespawnPlayers;
 
     public List<Shield> shieldList = new List<Shield>();
 
@@ -63,6 +64,7 @@ public class LevelManager : MonoBehaviour
 
     public void RespawnPlayers(float respawnTime)
     {
+        if (onRespawnPlayers != null) onRespawnPlayers.Invoke();
         GameManager.instance.isPlaying = false;
         Respawn respawn;
 

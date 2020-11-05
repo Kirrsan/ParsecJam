@@ -43,6 +43,11 @@ public class Shoot : MonoBehaviour
             obj.transform.position = _bulletSpawner.transform.position;
             _pooledBullets.Add(obj);
         }
+
+        LevelManager.instance.onRespawnPlayers += () =>
+        {
+            _currentShootCapacity = _shootCapacityMax;
+        };
     }
 
     private void Update()

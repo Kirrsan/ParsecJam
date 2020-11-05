@@ -55,6 +55,10 @@ public class TopDownEntity : MonoBehaviour
     private bool _isFalling = false;
 
     [SerializeField] private float strafeOffset;
+    [SerializeField] private BoxCollider _gunCollider;
+
+    private float _initialYPosition;
+    private bool _yInitialized = false;
 
     
     private void Awake()
@@ -70,6 +74,14 @@ public class TopDownEntity : MonoBehaviour
         _dashTimer = _dashCooldown;
         _life = _lifeMax;
         _headList = new GameObject[_maxHeadsOnScene];
+        StartCoroutine(WaitAndInitializeY());
+    }
+
+    private IEnumerator WaitAndInitializeY()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _initialYPosition = transform.position.y;
+        _yInitialized = true;
     }
 
     public void SetIndex(int newIndex)
@@ -94,6 +106,18 @@ public class TopDownEntity : MonoBehaviour
                     AudioManager.instance.Play("DashCooldownComplete");
                 }
             }
+            if(transform.position.y > _initialYPosition && _yInitialized)
+            {
+                transform.position = new Vector3(transform.position.x, _initialYPosition, transform.position.z);
+            }
+            if (_isFalling)
+            {
+                _gunCollider.enabled = false;
+            }
+            else
+            {
+                _gunCollider.enabled = true;
+            }
         }
     }
 
@@ -117,7 +141,7 @@ public class TopDownEntity : MonoBehaviour
             newPosition.z += _velocity.y * Time.fixedDeltaTime;
             transform.position = newPosition;
 
-            if(transform.position.y <= -2 && !_isFalling)
+            if(transform.position.y <= _initialYPosition - 0.5f && !_isFalling)
             {
                 _isFalling = true;
                 int rand = Random.Range(0, 16);
@@ -129,6 +153,10 @@ public class TopDownEntity : MonoBehaviour
                 {
                     AudioManager.instance.Play("PlayerFall");
                 }
+            }
+            else if(transform.position.y > _initialYPosition - 0.5f)
+            {
+                _isFalling = false;
             }
         }
     }

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8486513976304699414}
   m_Layer: 8
   m_Name: P_Head
-  m_TagString: Untagged
+  m_TagString: Unshootable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

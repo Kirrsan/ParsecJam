@@ -69,8 +69,7 @@ public class TopDownController : MonoBehaviour
 
             Vector2 moveDir = new Vector2(dirX, dirY);
             moveDir.Normalize();
-
-
+            
             if ((aimDirX > _deadZone || aimDirX < -_deadZone) || (aimDirY > _deadZone || aimDirY < -_deadZone))
             {
                 _aimMoveDir[0] = new Vector2(aimDirX, aimDirY);

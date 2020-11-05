@@ -143,6 +143,7 @@ public class TopDownEntity : MonoBehaviour
                 _anim.SetTrigger("PickupItem");
                 _canPickUpSomething = false;
                 powerBehaviour.SetPower(_pickUp.GivePower());
+                BonusManager.instance.RemoveBonus(_pickUp);
                 Destroy(_pickUp.gameObject);
                 _pickUp = null;
 

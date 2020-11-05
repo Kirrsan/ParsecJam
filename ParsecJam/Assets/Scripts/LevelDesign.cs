@@ -8,6 +8,9 @@ public class LevelDesign : MonoBehaviour
     public GameObject respawnPlayer1;
     public GameObject respawnPlayer2;
 
+    public PickUpPosition[] bonusPosition;
+    public int numberOfBonusToSpawn;
+    
     public GameObject level;
 
     public void Activate()

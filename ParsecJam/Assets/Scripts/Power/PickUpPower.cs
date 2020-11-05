@@ -40,4 +40,9 @@ public class PickUpPower : MonoBehaviour
         return powerToGive;
     }
 
+    public void SetPower(Power power)
+    {
+        powerToGive = power;
+    }
+
 }

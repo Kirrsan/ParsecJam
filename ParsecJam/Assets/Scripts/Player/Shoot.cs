@@ -75,6 +75,7 @@ public class Shoot : MonoBehaviour
             GameObject bullet = GetPooledBullet();
             if (bullet != null)
             {
+                AudioManager.instance.Play("Shot");
                 bullet.transform.position = _bulletSpawner.transform.position;
                 bullet.transform.rotation = _bulletSpawner.transform.rotation;
                 bullet.GetComponent<BulletBehaviour>().SetPlayerIndex(_index);

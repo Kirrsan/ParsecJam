@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Mine : MonoBehaviour
 {
@@ -14,6 +12,8 @@ public class Mine : MonoBehaviour
     public float innerCircleDistance;
 
     public bool _isMinePlaced = false;
+
+    [SerializeField] private Text _playerText;
 
     private int _playersInInner = 0;
     private TopDownEntity _playerInInner;
@@ -133,6 +133,11 @@ public class Mine : MonoBehaviour
     private float CalculateDistance(Transform targetTransform)
     {
         return ((Vector3)targetTransform.position - (Vector3)transform.position).sqrMagnitude;
+    }
+
+    public void SetPlayerText(int playerIndex)
+    {
+        _playerText.text = "P" + playerIndex.ToString();
     }
     
 }

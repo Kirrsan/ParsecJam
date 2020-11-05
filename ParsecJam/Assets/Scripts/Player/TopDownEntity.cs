@@ -267,7 +267,6 @@ public class TopDownEntity : MonoBehaviour
         
 
         float angle = Vector2.SignedAngle(_orientDir.normalized, _moveDir);
-        Debug.Log(angle);
 
         if (angle > 90 - strafeOffset && angle < 90 + strafeOffset)
         {

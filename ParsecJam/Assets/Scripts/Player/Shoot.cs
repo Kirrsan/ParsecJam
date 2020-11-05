@@ -6,9 +6,16 @@ public class Shoot : MonoBehaviour
 {
     private int _index;
 
+    [Header("Bullet Settings")]
     [SerializeField] private GameObject _bulletSpawner;
     [SerializeField] private GameObject _bulletPrefab;
 
+    [Header("Pooler")]
+    [SerializeField] private List<GameObject> _pooledBullets;
+    [SerializeField] private int _amountBulletToPool; 
+    public bool shouldExpand = true;
+
+    [Header("Shooting Settings")]
     [SerializeField] private float _shootRate = 0.1f;
     [SerializeField] private float _shootCapacityMax = 5;
     [SerializeField] private float _shootRecoveryRate = 0.5f;
@@ -26,6 +33,15 @@ public class Shoot : MonoBehaviour
     {
         _index = GetComponent<TopDownEntity>().GetIndex();
         _currentShootCapacity = _shootCapacityMax;
+
+        _pooledBullets = new List<GameObject>();
+        for (int i = 0; i < _amountBulletToPool; i++)
+        {
+            GameObject obj = (GameObject)Instantiate(_bulletPrefab);
+            obj.SetActive(false);
+            obj.transform.parent = _bulletSpawner.transform;
+            _pooledBullets.Add(obj);
+        }
     }
 
     private void Update()
@@ -55,12 +71,19 @@ public class Shoot : MonoBehaviour
         {
             _canShoot = false;
             _currentShootCapacity -= Time.deltaTime * _capacityLooseRate;
-            GameObject bullet = Instantiate(_bulletPrefab, _bulletSpawner.transform.position, _bulletSpawner.transform.rotation);
-            bullet.GetComponent<BulletBehaviour>().SetPlayerIndex(_index);
-            StartCoroutine(WaitBeforeShootingAgain());
-            if(_currentShootCapacity <= 0)
+
+            GameObject bullet = GetPooledBullet();
+            if (bullet != null)
             {
-                _inReloadMode = true;
+                bullet.transform.position = _bulletSpawner.transform.position;
+                bullet.transform.rotation = _bulletSpawner.transform.rotation;
+                bullet.GetComponent<BulletBehaviour>().SetPlayerIndex(_index);
+                bullet.SetActive(true);
+                StartCoroutine(WaitBeforeShootingAgain());
+                if (_currentShootCapacity <= 0)
+                {
+                    _inReloadMode = true;
+                }
             }
         }
     }
@@ -74,6 +97,29 @@ public class Shoot : MonoBehaviour
     public void SetIsShooting(bool value)
     {
         _isShooting = value;
+    }
+
+    public GameObject GetPooledBullet()
+    {
+        for (int i = 0; i < _pooledBullets.Count; i++)
+        {
+            if (!_pooledBullets[i].activeInHierarchy)
+            {
+                return _pooledBullets[i];
+            }
+        }
+        if (shouldExpand)
+        {
+            GameObject obj = (GameObject)Instantiate(_bulletPrefab);
+            obj.SetActive(false);
+            obj.transform.parent = _bulletSpawner.transform;
+            _pooledBullets.Add(obj);
+            return obj;
+        }
+        else
+        {
+            return null;
+        }
     }
 
 }

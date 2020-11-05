@@ -1107,6 +1107,8 @@ MonoBehaviour:
   _bulletSpawner: {fileID: 4684628823947470408}
   _bulletPrefab: {fileID: 6474714074037915856, guid: b6df08dcc1926974aa2b747e2f3e802f,
     type: 3}
+  _pooledBullets: []
+  _amountBulletToPool: 15
   _shootRate: 0.1
   _shootCapacityMax: 5
   _shootRecoveryRate: 0.5

@@ -47,6 +47,6 @@ public class BulletBehaviour : MonoBehaviour
         {
             other.GetComponent<Shield>().LooseLife(1);
         }
-        Destroy(this.gameObject);
+        gameObject.SetActive(false);
     }
 }

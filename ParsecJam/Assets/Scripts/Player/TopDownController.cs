@@ -9,6 +9,7 @@ public class TopDownController : MonoBehaviour
     private Player[] _rewiredPlayer;
 
     private Vector2[] _aimMoveDir;
+    [SerializeField] private float _deadZone;
 
     private void Awake()
     {
@@ -47,6 +48,16 @@ public class TopDownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            players[0]._anim.SetTrigger("Dance");            
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F9))
+        {
+            players[1]._anim.SetTrigger("Dance");            
+        }
+        
         if (GameManager.instance.isPlaying)
         {
             #region Player1
@@ -60,13 +71,11 @@ public class TopDownController : MonoBehaviour
             moveDir.Normalize();
 
 
-            if (aimDirX != 0 && aimDirY != 0)
+            if ((aimDirX > _deadZone || aimDirX < -_deadZone) || (aimDirY > _deadZone || aimDirY < -_deadZone))
             {
                 _aimMoveDir[0] = new Vector2(aimDirX, aimDirY);
                 _aimMoveDir[0].Normalize();
             }
-
-
             players[0].Move(moveDir, _aimMoveDir[0]);
 
             if (_rewiredPlayer[0].GetButtonDown("Dash"))
@@ -82,7 +91,7 @@ public class TopDownController : MonoBehaviour
             {
                 players[0].shootFunc.SetIsShooting(false);
             }
-            if (_rewiredPlayer[0].GetButtonDown("PickUp"))
+            if (_rewiredPlayer[0].GetButton("PickUp"))
             {
                 players[0].Pickup();
             }
@@ -103,12 +112,11 @@ public class TopDownController : MonoBehaviour
             moveDir.Normalize();
 
 
-            if (aimDirX != 0 && aimDirY != 0)
+            if ((aimDirX > _deadZone || aimDirX < -_deadZone) || (aimDirY > _deadZone || aimDirY < -_deadZone))
             {
                 _aimMoveDir[1] = new Vector2(aimDirX, aimDirY);
                 _aimMoveDir[1].Normalize();
             }
-
 
             players[1].Move(moveDir, _aimMoveDir[1]);
 
@@ -125,7 +133,7 @@ public class TopDownController : MonoBehaviour
             {
                 players[1].shootFunc.SetIsShooting(false);
             }
-            if (_rewiredPlayer[1].GetButtonDown("PickUp"))
+            if (_rewiredPlayer[1].GetButton("PickUp"))
             {
                 players[1].Pickup();
             }

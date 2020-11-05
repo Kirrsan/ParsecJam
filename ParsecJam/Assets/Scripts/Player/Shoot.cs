@@ -98,6 +98,7 @@ public class Shoot : MonoBehaviour
 
     public void SetIsShooting(bool value)
     {
+        LevelManager.instance.players[_index]._anim.SetBool("Firing", value);
         _isShooting = value;
     }
 
@@ -122,6 +123,12 @@ public class Shoot : MonoBehaviour
         {
             return null;
         }
+    }
+
+    public void ResetIsShooting()
+    {
+        SetIsShooting(false);
+        LevelManager.instance.players[LevelManager.instance.GetOtherPlayer(_index)].shootFunc.SetIsShooting(false);
     }
 
 }

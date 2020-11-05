@@ -7,6 +7,8 @@ TagManager:
   - Wall
   - Bullet
   - Unshootable
+  - Test
+  - Shield
   layers:
   - Default
   - TransparentFX

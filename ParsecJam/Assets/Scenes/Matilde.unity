@@ -756,11 +756,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4684628824359040262, guid: f3ec4d60cfd592a40b8a2b17530e52af,
-        type: 3}
-      propertyPath: _lifeMax
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 4684628824359040263, guid: f3ec4d60cfd592a40b8a2b17530e52af,
         type: 3}
       propertyPath: _cpacityLooseRate

@@ -1038,6 +1038,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 244203230008510665}
     m_Modifications:
+    - target: {fileID: 4259412792089763502, guid: 28ae000b1eafcc24a9c808f941d3344a,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4259412792089763504, guid: 28ae000b1eafcc24a9c808f941d3344a,
         type: 3}
       propertyPath: m_Name
@@ -1131,11 +1136,6 @@ PrefabInstance:
       value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 741105824848453316, guid: e707946fa82076e48bdac9edc559a837,
-        type: 3}
-      propertyPath: m_TagString
-      value: Wall
-      objectReference: {fileID: 0}
-    - target: {fileID: 1600671453246994707, guid: e707946fa82076e48bdac9edc559a837,
         type: 3}
       propertyPath: m_TagString
       value: Wall

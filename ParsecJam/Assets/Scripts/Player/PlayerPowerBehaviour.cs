@@ -11,6 +11,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
     [Header("Mine Settings")]
     [SerializeField] private GameObject _minePrefab;
     [SerializeField] private Transform _mineSpawner;
+    [SerializeField] private GameObject _mineFXprefab;
     private bool _mineSetUp = false;
     private Mine _currentMine;
 
@@ -74,8 +75,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
         else
         {
             AudioManager.instance.Play("Mine");
-            _currentMine.TriggerPower();
-            Destroy(_currentMine.gameObject);
+;            _currentMine.TriggerPower();
             _currentMine = null;
             _mineSetUp = false;
             _currentPower = Power.None;

@@ -128,6 +128,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 581289295, guid: a44a6807364a23a40ab5abb858574383, type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 244203230008510665, guid: a44a6807364a23a40ab5abb858574383,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -187,6 +191,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: === LD ===
+      objectReference: {fileID: 0}
+    - target: {fileID: 4176883312581344789, guid: a44a6807364a23a40ab5abb858574383,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259412791208247869, guid: a44a6807364a23a40ab5abb858574383,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259412791642432390, guid: a44a6807364a23a40ab5abb858574383,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335735157465021089, guid: a44a6807364a23a40ab5abb858574383,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615182716387720101, guid: a44a6807364a23a40ab5abb858574383,
+        type: 3}
+      propertyPath: powerThatWillSpawnHere
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44a6807364a23a40ab5abb858574383, type: 3}
@@ -282,6 +311,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &952135033 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 244203230008510664, guid: a44a6807364a23a40ab5abb858574383,
+    type: 3}
+  m_PrefabInstance: {fileID: 674808927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ead7c2e7872f0842a4c523aa6783d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,6 +510,10 @@ PrefabInstance:
       propertyPath: _roundDuration
       value: 1099.15
       objectReference: {fileID: 0}
+    - target: {fileID: 1030872074, guid: 14c4c6a1b68b92f4c89379a50f3063a6, type: 3}
+      propertyPath: _levelDesigns.Array.data[0]
+      value: 
+      objectReference: {fileID: 952135033}
     - target: {fileID: 3689859212916610054, guid: 14c4c6a1b68b92f4c89379a50f3063a6,
         type: 3}
       propertyPath: m_Name

@@ -32,9 +32,11 @@ public class TopDownEntity : MonoBehaviour
     [Header("Death Settings")]
     [SerializeField] private float _playerDeathTime = 30f;
     [SerializeField] private bool _isDead = false;
+    [SerializeField] private GameObject _deathFX;
 
     [Header("Life Settings")]
     [SerializeField] private float _lifeMax = 15;
+    [SerializeField] private GameObject[] _hitFX;
     private float _life;
 
 
@@ -325,10 +327,15 @@ public class TopDownEntity : MonoBehaviour
         {
             _life += lifeToLoose;
             InterfaceManager.instance.AdjustLifeBar(_index, _life * (1 / _lifeMax));
+            int rand = Random.Range(0, _hitFX.Length);
+            _hitFX[rand].SetActive(false);
+            _hitFX[rand].SetActive(true);
         }
         if (_life <= 0 && !_isDead)
         {
             _isDead = true;
+            _deathFX.SetActive(false);
+            _deathFX.SetActive(true);
             _anim.SetBool("Die", true);
             int rand = Random.Range(0, 16);
             if(rand == 9)
@@ -372,6 +379,8 @@ public class TopDownEntity : MonoBehaviour
 
     public void Kill(int ennemyIndex)
     {
+        _deathFX.SetActive(false);
+        _deathFX.SetActive(true);
         _anim.SetBool("Die", true);
         AudioManager.instance.Play("DeathSound");
         _isDead = true;

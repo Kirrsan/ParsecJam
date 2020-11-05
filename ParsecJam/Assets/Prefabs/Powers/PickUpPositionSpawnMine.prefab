@@ -43,4 +43,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e13d1f97e8c206489610ec1cd251a42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerThatWillSpawnHere: 1
+  powerThatWillSpawnHere: 2

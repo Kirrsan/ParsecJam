@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:ParsecJam/Assets/Prefabs/LDAssets/LDs.meta
 guid: b95469f91613c0141a07f921c1f785b6
+=======
+guid: 286aa737be56c5e43b098ef4fea93ccb
+>>>>>>> UI/UI-integration:ParsecJam/Assets/Graphs/Police.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

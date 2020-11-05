@@ -1,6 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:ParsecJam/Assets/Prefabs/LDAssets/BOWLCEREYES.prefab.meta
 guid: 49f20ad796d61e94aae10babd1e61015
 PrefabImporter:
+=======
+guid: d28f8de554041ac4a915e7cf8cb951ee
+folderAsset: yes
+DefaultImporter:
+>>>>>>> UI/UI-integration:ParsecJam/Assets/Graphs/Sprites/UI.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

@@ -1154,7 +1154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpawner: {fileID: 4684628823947470408}
-  _bulletPrefab: {fileID: 6474714074037915856, guid: b6df08dcc1926974aa2b747e2f3e802f,
+  _bulletPrefab: {fileID: 149726781617813153, guid: 0304b65e8e690d74da50b90c513e8bb9,
     type: 3}
   _pooledBullets: []
   _amountBulletToPool: 15

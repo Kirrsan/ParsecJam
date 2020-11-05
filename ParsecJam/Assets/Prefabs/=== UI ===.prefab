@@ -3467,6 +3467,7 @@ MonoBehaviour:
   _powerName:
   - {fileID: 6280163344285071426}
   - {fileID: 4708097287386725505}
+  _healthBarSecondColor: {r: 0.90588236, g: 0.6627451, b: 0.6, a: 1}
 --- !u!114 &5873133323641448085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4054,7 +4055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.76470596, g: 0.9058824, b: 0.95294124, a: 1}
+  m_Color: {r: 0.7647059, g: 0.90588236, b: 0.9529412, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:

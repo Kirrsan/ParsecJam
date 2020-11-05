@@ -102,4 +102,8 @@ public class PlayerPowerBehaviour : MonoBehaviour
         InterfaceManager.instance.ChangePowerIcon(_playerEntity.GetIndex(), _currentPower);
     }
 
+    public bool GetMineSetUp()
+    {
+        return _mineSetUp;
+    }
 }

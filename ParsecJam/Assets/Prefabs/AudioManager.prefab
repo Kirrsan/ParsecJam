@@ -188,3 +188,10 @@ MonoBehaviour:
     priority: 256
     loop: 1
     source: {fileID: 0}
+  - clipName: Shot
+    clip:
+    - {fileID: 8300000, guid: 78ff072e574b03846b8f75b021046159, type: 3}
+    volume: 0.5
+    priority: 100
+    loop: 0
+    source: {fileID: 0}

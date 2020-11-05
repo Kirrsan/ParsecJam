@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 7088752130221326527}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Unshootable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushPower: 10
+  pushPowerMiddleCircle: 8
   mineMaxRadius: 5
   middleCircleDistance: 4
   innerCircleDistance: 3

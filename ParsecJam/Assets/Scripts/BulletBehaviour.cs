@@ -25,11 +25,21 @@ public class BulletBehaviour : MonoBehaviour
         _playerIndex = index;
     }
 
+    public int GetPlayerIndex()
+    {
+        return _playerIndex;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Unshootable"))
         {
             return;
+        }
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            if(other.GetComponent<BulletBehaviour>().GetPlayerIndex() == _playerIndex)
+                return;
         }
         if (other.gameObject.CompareTag("Player"))
         {

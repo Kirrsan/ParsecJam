@@ -56,6 +56,9 @@ public class TopDownEntity : MonoBehaviour
 
     [SerializeField] private float strafeOffset;
 
+    private float _initialYPosition;
+    private bool _yInitialized = false;
+
     
     private void Awake()
     {
@@ -70,6 +73,14 @@ public class TopDownEntity : MonoBehaviour
         _dashTimer = _dashCooldown;
         _life = _lifeMax;
         _headList = new GameObject[_maxHeadsOnScene];
+        StartCoroutine(WaitAndInitializeY());
+    }
+
+    private IEnumerator WaitAndInitializeY()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _initialYPosition = transform.position.y;
+        _yInitialized = true;
     }
 
     public void SetIndex(int newIndex)
@@ -93,6 +104,11 @@ public class TopDownEntity : MonoBehaviour
                 {
                     AudioManager.instance.Play("DashCooldownComplete");
                 }
+            }
+            if(transform.position.y > _initialYPosition && _yInitialized)
+            {
+                print("miaou");
+                transform.position = new Vector3(transform.position.x, _initialYPosition, transform.position.z);
             }
         }
     }

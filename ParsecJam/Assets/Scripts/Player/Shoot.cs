@@ -39,7 +39,7 @@ public class Shoot : MonoBehaviour
         {
             GameObject obj = (GameObject)Instantiate(_bulletPrefab);
             obj.SetActive(false);
-            obj.transform.parent = _bulletSpawner.transform;
+            obj.transform.position = _bulletSpawner.transform.position;
             _pooledBullets.Add(obj);
         }
     }
@@ -112,7 +112,7 @@ public class Shoot : MonoBehaviour
         {
             GameObject obj = (GameObject)Instantiate(_bulletPrefab);
             obj.SetActive(false);
-            obj.transform.parent = _bulletSpawner.transform;
+            obj.transform.position = _bulletSpawner.transform.position;
             _pooledBullets.Add(obj);
             return obj;
         }

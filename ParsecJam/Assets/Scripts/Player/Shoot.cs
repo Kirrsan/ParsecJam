@@ -51,6 +51,7 @@ public class Shoot : MonoBehaviour
             _currentShootCapacity += _shootRecoveryRate * Time.deltaTime;
             if (_currentShootCapacity > _shootCapacityMax)
             {
+                AudioManager.instance.Play("Reload");
                 _currentShootCapacity = _shootCapacityMax;
             }
         }

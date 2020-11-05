@@ -134,7 +134,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clipName: PowerPickUp
     clip:
-    - {fileID: 8300000, guid: 9cbce52f9b2ebec47b81c22e1ec11083, type: 3}
+    - {fileID: 8300000, guid: d13e713ee5030f64daf3e3ae9d833b62, type: 3}
     volume: 1
     priority: 50
     loop: 0
@@ -193,5 +193,12 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 78ff072e574b03846b8f75b021046159, type: 3}
     volume: 0.5
     priority: 100
+    loop: 0
+    source: {fileID: 0}
+  - clipName: Reload
+    clip:
+    - {fileID: 8300000, guid: 9cbce52f9b2ebec47b81c22e1ec11083, type: 3}
+    volume: 1
+    priority: 50
     loop: 0
     source: {fileID: 0}

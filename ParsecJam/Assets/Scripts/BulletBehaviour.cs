@@ -41,9 +41,9 @@ public class BulletBehaviour : MonoBehaviour
             if(other.GetComponent<BulletBehaviour>().GetPlayerIndex() == _playerIndex)
                 return;
         }
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerTag"))
         {
-            TopDownEntity otherPlayer = other.GetComponent<TopDownEntity>();
+            TopDownEntity otherPlayer = other.GetComponentInParent<TopDownEntity>();
             if (otherPlayer.GetIndex() != _playerIndex)
             {
                 otherPlayer.ChangeLife(-1);

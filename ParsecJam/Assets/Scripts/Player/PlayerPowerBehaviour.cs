@@ -23,6 +23,10 @@ public class PlayerPowerBehaviour : MonoBehaviour
     void Start()
     {
         _playerEntity = GetComponent<TopDownEntity>();
+        LevelManager.instance.onRespawnPlayers += () =>
+        {
+            ResetPower();
+        };
     }
 
     // Update is called once per frame

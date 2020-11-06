@@ -5,7 +5,7 @@ using UnityEngine;
 public class WallDetection : MonoBehaviour
 {
 
-    private TopDownEntity _entity;
+    [SerializeField] private TopDownEntity _entity;
     [SerializeField] private WallDetectionTrigger _detectionTrigger;
     private Vector3 _lastPosition;
     private Vector3 _contactPoint;

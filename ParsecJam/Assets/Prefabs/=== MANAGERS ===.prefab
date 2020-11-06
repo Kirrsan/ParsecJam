@@ -134,7 +134,7 @@ MonoBehaviour:
   shieldList: []
   mineList: []
   respawnTimeBulletKill: 2
-  respawnTimeFallDeath: 5
+  respawnTimeFallDeath: 1
   numberOfMinesExploded: 0
 --- !u!1 &6327400527005253896
 GameObject:
@@ -625,7 +625,7 @@ MonoBehaviour:
       - _actionCategoryId: 0
         _actionId: 5
         _elementType: 1
-        _elementIdentifierId: 8
+        _elementIdentifierId: 10
         _axisRange: 0
         _invert: 0
         _axisContribution: 0

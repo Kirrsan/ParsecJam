@@ -198,7 +198,7 @@ MonoBehaviour:
   - clipName: Reload
     clip:
     - {fileID: 8300000, guid: 9cbce52f9b2ebec47b81c22e1ec11083, type: 3}
-    volume: 1
+    volume: 0.5
     priority: 50
     loop: 0
     source: {fileID: 0}

@@ -33,7 +33,7 @@ public class Respawn : MonoBehaviour
         entity.SetIsFalling(false);
         entity._anim.SetBool("Die", false);
         entity._anim.Play("Rifle Idle");
-
+        entity.isBeingHit = false;
         entity.SetLife(entity.GetLifeMax());
         GameManager.instance.isPlaying = true;
     }

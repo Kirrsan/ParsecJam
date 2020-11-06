@@ -47,7 +47,11 @@ public class BulletBehaviour : MonoBehaviour
             if (otherPlayer.GetIndex() != _playerIndex)
             {
                 otherPlayer.ChangeLife(-1);
-                otherPlayer._anim.SetTrigger("HitFront");
+                if (!otherPlayer.isBeingHit)
+                {
+                    otherPlayer._anim.SetTrigger("HitFront");
+                    otherPlayer.isBeingHit = true;
+                }
             }
             else
             {

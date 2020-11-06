@@ -28,6 +28,7 @@ public class Shoot : MonoBehaviour
     private bool _canShoot = true;
     private bool _isShooting = false;
     private bool _inReloadMode = false;
+    private bool _animationStarted = false;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +70,17 @@ public class Shoot : MonoBehaviour
                 _inReloadMode = false;
             }
         }
+
+        if (!_animationStarted && _currentShootCapacity >= 0 && _isShooting && !_inReloadMode)
+        {
+            _animationStarted = true;
+            LevelManager.instance.players[_index]._anim.SetBool("Firing", _animationStarted);
+        }
+        else if (_animationStarted && (_currentShootCapacity < 0 || !_isShooting || _inReloadMode))
+        {
+            _animationStarted = false;
+            LevelManager.instance.players[_index]._anim.SetBool("Firing", _animationStarted);
+        }
         InterfaceManager.instance.AdjustShootBar(_index, (_currentShootCapacity * 1 / _shootCapacityMax));
     }
 
@@ -107,7 +119,6 @@ public class Shoot : MonoBehaviour
 
     public void SetIsShooting(bool value)
     {
-        LevelManager.instance.players[_index]._anim.SetBool("Firing", value);
         _isShooting = value;
     }
 

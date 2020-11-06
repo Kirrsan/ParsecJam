@@ -56,12 +56,11 @@ public class TopDownEntity : MonoBehaviour
     public Animator _anim;
     private bool _isFalling = false;
     public float hitOffset;
-
     [SerializeField] private float strafeOffset;
     [SerializeField] private BoxCollider _gunCollider;
-
     private float _initialYPosition;
     private bool _yInitialized = false;
+    public bool isBeingHit = false;
 
     
     private void Awake()

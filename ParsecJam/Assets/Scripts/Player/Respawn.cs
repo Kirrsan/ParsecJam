@@ -23,7 +23,10 @@ public class Respawn : MonoBehaviour
         yield return new WaitForSeconds(deathTimer); 
         transform.position = new Vector3( _respawnPoint.transform.position.x,  _respawnPoint.transform.position.y,  _respawnPoint.transform.position.z);
         TopDownEntity entity = GetComponent<TopDownEntity>();
-        
+        if (entity.powerBehaviour.GetMineSetUp())
+        {
+            entity.powerBehaviour.ResetPower();
+        }
         entity.SetIsDead(false);
         if (_currentPlayerIndex == 0)
         {

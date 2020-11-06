@@ -672,6 +672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathZone
       objectReference: {fileID: 0}
+    - target: {fileID: 4180221391530770495, guid: 772086fdf05a61149aaebd29c92244fc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 772086fdf05a61149aaebd29c92244fc, type: 3}
 --- !u!4 &4180221390656313591 stripped
@@ -761,6 +766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3e81706c8ea8f6e4790e135acf23659d,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e81706c8ea8f6e4790e135acf23659d, type: 3}

@@ -33,7 +33,7 @@ public class Mine : MonoBehaviour
         LevelManager.instance.mineList.Add(this);
     }
 
-    public void TriggerPower()
+    public void TriggerPower(bool firstDetonator)
     {
         _playerText.gameObject.SetActive(false);
         _inputImage.SetActive(false);
@@ -49,7 +49,7 @@ public class Mine : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(players[i].transform.position, transform.position - players[i].transform.position, out hit, mineMaxRadius))
             {
-                if (hit.collider.gameObject.CompareTag("Shield"))
+                if (hit.collider.gameObject.CompareTag("Shield") || hit.collider.gameObject.CompareTag("Wall"))
                 {
                     float distanceToWall = CalculateDistance(hit.transform);
                     if (distanceToWall < distanceToPlayer)
@@ -98,6 +98,21 @@ public class Mine : MonoBehaviour
             {
                 MiddleCircleBehaviour(LevelManager.instance.shieldList[i]);
 
+            }
+        }
+
+        if (firstDetonator)
+        {
+            for (int i = 0; i < LevelManager.instance.mineList.Count; i++)
+            {
+                if (LevelManager.instance.mineList[i] != this)
+                {
+                    float distanceToOtherMine = CalculateDistance(LevelManager.instance.mineList[i].transform);
+                    if (distanceToOtherMine < mineMaxRadius * mineMaxRadius)
+                    {
+                        LevelManager.instance.mineList[i].TriggerPower(false);
+                    }
+                }
             }
         }
 

@@ -3,7 +3,27 @@ guid: f7d8d38386368cc4a983413647a0594a
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Oeil
+    second: {fileID: 2100000, guid: fbc6e762881e5594f87b50ea71caa35a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: "Paupi\xE8re.002"
+    second: {fileID: 2100000, guid: 939d72bec3c9551438fd69f38721cbb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pupille
+    second: {fileID: 2100000, guid: ce9e294418633f0418f8d5845d6e289e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sang
+    second: {fileID: 2100000, guid: 3f5a45523d0ebd548a461d215166a9fc, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

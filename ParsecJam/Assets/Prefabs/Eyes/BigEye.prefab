@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7752034643850250989, guid: f7d8d38386368cc4a983413647a0594a, type: 3}
+  - {fileID: 2100000, guid: 939d72bec3c9551438fd69f38721cbb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -137,9 +137,9 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8573219749627820792, guid: f7d8d38386368cc4a983413647a0594a, type: 3}
-  - {fileID: -8044806269546927001, guid: f7d8d38386368cc4a983413647a0594a, type: 3}
-  - {fileID: 6363987449459389390, guid: f7d8d38386368cc4a983413647a0594a, type: 3}
+  - {fileID: 2100000, guid: 3f5a45523d0ebd548a461d215166a9fc, type: 2}
+  - {fileID: 2100000, guid: ce9e294418633f0418f8d5845d6e289e, type: 2}
+  - {fileID: 2100000, guid: fbc6e762881e5594f87b50ea71caa35a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -229,7 +229,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _timerBetweenChecksMax: 3
   _orbite: {fileID: 649182489485837444}
+  _rotationSpeed: 3
+  _timeBetweenFollowPlayerChecks: 0.3
   _distanceMinToFollowPlayer: 7
+  _angleToFollowPlayer: 90
+  _isClamped: 1
+  _positiveAngleMin: 150
+  _positiveAngleMax: 175
+  _negativeAngleMin: -175
+  _negativeAngleMax: -150
 --- !u!114 &8523030652743798617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +310,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -7752034643850250989, guid: f7d8d38386368cc4a983413647a0594a, type: 3}
+  - {fileID: 2100000, guid: 939d72bec3c9551438fd69f38721cbb6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

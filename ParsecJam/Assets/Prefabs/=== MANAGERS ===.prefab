@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 477219817932c7744a9625166dfdada4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundDuration: 300
+  _roundDuration: 150
   roundTimer: 0
   players:
   - {fileID: 0}
@@ -133,8 +133,8 @@ MonoBehaviour:
   currentLevelDesign: 0
   shieldList: []
   mineList: []
-  respawnTimeBulletKill: 1
-  respawnTimeFallDeath: 1
+  respawnTimeBulletKill: 2
+  respawnTimeFallDeath: 5
   numberOfMinesExploded: 0
 --- !u!1 &6327400527005253896
 GameObject:

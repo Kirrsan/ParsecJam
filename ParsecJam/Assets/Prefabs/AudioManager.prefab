@@ -202,3 +202,10 @@ MonoBehaviour:
     priority: 50
     loop: 0
     source: {fileID: 0}
+  - clipName: NoShield
+    clip:
+    - {fileID: 8300000, guid: 026b5f42a78798a469e24ccf43d729b3, type: 3}
+    volume: 1
+    priority: 50
+    loop: 0
+    source: {fileID: 0}

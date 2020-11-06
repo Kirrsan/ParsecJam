@@ -18,6 +18,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
     [Header("Shield Settings")]
     [SerializeField] private GameObject[] _shieldPrefab;
     [SerializeField] private Transform _shieldSpawner;
+    [SerializeField] private GameObject _noShieldFX;
 
     // Start is called before the first frame update
     void Start()
@@ -91,6 +92,9 @@ public class PlayerPowerBehaviour : MonoBehaviour
     {
         if (_shieldSpawner.GetComponent<SpawnCollision>().GetIsInCollision())
         {
+            AudioManager.instance.Play("NoShield");
+            _noShieldFX.SetActive(false);
+            _noShieldFX.SetActive(true);
             Debug.Log("You shall not place that here ! (shield)");
             return;
         }

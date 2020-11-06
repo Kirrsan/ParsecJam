@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1281785265822361678}
   - component: {fileID: 7830148929744254372}
   - component: {fileID: 7556597231531266536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BallePiment
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -44,10 +44,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.32150352
-  m_Height: 2.5199854
-  m_Direction: 1
-  m_Center: {x: 0.0046678185, y: 0.08447862, z: 0.07876328}
+  m_Radius: 0.121515036
+  m_Height: 0.64300704
+  m_Direction: 2
+  m_Center: {x: 0.0046678185, y: 0.013977885, z: 0.07876328}
 --- !u!54 &7830148929744254372
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 3402600319946896040}
   - component: {fileID: 785352304721299128}
   - component: {fileID: 8507823915727758686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: P_Bullet_Var3
   m_TagString: Untagged
   m_Icon: {fileID: 0}

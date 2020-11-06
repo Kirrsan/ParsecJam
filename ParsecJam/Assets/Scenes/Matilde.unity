@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -571,31 +571,7 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
---- !u!114 &1278179213 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4684628824359040262, guid: f3ec4d60cfd592a40b8a2b17530e52af,
-    type: 3}
-  m_PrefabInstance: {fileID: 4684628823350084235}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27a0d58f8abecb48a569e88daf16e17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1901576028 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5224115000172494083, guid: 6883fd987b6916242b858676f93a39cd,
-    type: 3}
-  m_PrefabInstance: {fileID: 683682867195967326}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f27a0d58f8abecb48a569e88daf16e17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &683682867195967326
+--- !u!1001 &969502760
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -664,6 +640,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6883fd987b6916242b858676f93a39cd, type: 3}
+--- !u!114 &969502761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5224115000172494083, guid: 6883fd987b6916242b858676f93a39cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 969502760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27a0d58f8abecb48a569e88daf16e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1278179213 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4684628824359040262, guid: f3ec4d60cfd592a40b8a2b17530e52af,
+    type: 3}
+  m_PrefabInstance: {fileID: 4684628823350084235}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f27a0d58f8abecb48a569e88daf16e17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3689859213211444260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -744,7 +744,7 @@ PrefabInstance:
         type: 3}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 1901576028}
+      objectReference: {fileID: 969502761}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14c4c6a1b68b92f4c89379a50f3063a6, type: 3}
 --- !u!1001 &4684628823350084235

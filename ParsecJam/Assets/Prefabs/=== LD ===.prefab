@@ -1135,6 +1135,11 @@ PrefabInstance:
       propertyPath: _angleToFollowPlayer
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 444201997070664576, guid: e707946fa82076e48bdac9edc559a837,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.68
+      objectReference: {fileID: 0}
     - target: {fileID: 741105824848453316, guid: e707946fa82076e48bdac9edc559a837,
         type: 3}
       propertyPath: m_TagString

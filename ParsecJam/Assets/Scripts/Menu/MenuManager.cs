@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Rewired.Utils.Platforms.Windows;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -15,6 +16,8 @@ public enum FunctionToDo
 
 public class MenuManager : MonoBehaviour
 {
+    [SerializeField] private Canvas _canvas;
+
     [Header("Panels")]
     [SerializeField] private GameObject _basePanel;
     [SerializeField] private GameObject _controlPanel;
@@ -29,41 +32,87 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private int _sceneToLoad = 1;
     [SerializeField] private EventSystem _eventSystem;
     private GameObject _lastSelectedGameObject;
+    private GameObject currentSelectedGameObject;
 
     [Header("Eye Settings")]
     [SerializeField] private Vector3[] _eyePossiblePositions;
     [SerializeField] private RectTransform _eyeTransform;
+    [SerializeField] private RectTransform _eyeParent;
     [SerializeField] private float _eyeSpeed = 2;
     private bool _hasToChangeEyePosition = true;
     private Vector3 _previousPosition;
     private Vector3 _newPosition;
     private float _eyePositionStep = 0;
 
+    private Vector3 _baseEyePosition;
+    private Vector3 _lastMousePosition;
+
+    private bool _mouseIsMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        _baseEyePosition = _eyeTransform.position;
         _previousPosition = _eyePossiblePositions[0];
+        _lastMousePosition = Input.mousePosition;
+        _newPosition = _eyePossiblePositions[0];
         GoToBasePanel();
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameObject currentSelectedGameObject = _eventSystem.currentSelectedGameObject;
+        if (_eventSystem.currentSelectedGameObject != null)
+        {
+            currentSelectedGameObject = _eventSystem.currentSelectedGameObject;
+        }
         if (currentSelectedGameObject != _lastSelectedGameObject)
         {
             if (_lastSelectedGameObject != null)
             {
                 AudioManager.instance.Play("UINavigation");
             }
-            _lastSelectedGameObject = currentSelectedGameObject;
+            if (currentSelectedGameObject != null && _lastSelectedGameObject != currentSelectedGameObject)
+            {
+                _lastSelectedGameObject = currentSelectedGameObject;
+            }
+        }
+        if(_eventSystem.currentSelectedGameObject == null)
+        {
+            currentSelectedGameObject.GetComponent<Button>().Select();
         }
 
+        //if(Input.GetAxis("Mouse X") != 0 || Input.GetAxis("Mouse Y") != 0)
+        //{
+        //    _mouseIsMoving = true;
+        //    _hasToChangeEyePosition = false;
+        //    _lastMousePosition = Input.mousePosition;
+        //    Vector3 newPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 20));
+        //    newPos = new Vector3(Mathf.Clamp(newPos.x - 15, -35, 35), Mathf.Clamp(newPos.y + 1, -35, 35), newPos.z);
+        //    _eyeTransform.localPosition = newPos;
+        //}
+        //else
+        //{
+        //    _mouseIsMoving = false;
+        //    if (_eyeTransform.localPosition != _newPosition){
+        //        _hasToChangeEyePosition = true;
+        //    }
+        //    if (_hasToChangeEyePosition)
+        //    {
+        //        _eyePositionStep += Time.deltaTime * _eyeSpeed;
+        //        _eyeTransform.localPosition = Vector3.Lerp(_previousPosition, _newPosition, _eyePositionStep);
+        //        if (_eyeTransform.localPosition == _newPosition)
+        //        {
+        //            _hasToChangeEyePosition = false;
+        //            _eyePositionStep = 0;
+        //        }
+        //    }
+        //}
         if (_hasToChangeEyePosition)
         {
             _eyePositionStep += Time.deltaTime * _eyeSpeed;
             _eyeTransform.localPosition = Vector3.Lerp(_previousPosition, _newPosition, _eyePositionStep);
-            if(_eyeTransform.localPosition == _newPosition)
+            if (_eyeTransform.localPosition == _newPosition)
             {
                 _hasToChangeEyePosition = false;
                 _eyePositionStep = 0;

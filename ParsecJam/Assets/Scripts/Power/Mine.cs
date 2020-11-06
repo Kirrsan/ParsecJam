@@ -181,6 +181,7 @@ public class Mine : MonoBehaviour
     private IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(_mineFXClouds.main.duration);
+        LevelManager.instance.mineList.Remove(this);
         Destroy(gameObject);
     }
     

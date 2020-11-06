@@ -679,6 +679,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_Cereal_Bowl
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5fa57ee376da8f9489370dcb1cd3686a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fa57ee376da8f9489370dcb1cd3686a, type: 3}
 --- !u!4 &3335056314905864924 stripped

@@ -181,8 +181,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerPrefab: {fileID: 3457515962706572553, guid: e282e59403983a24eaf5277b64038617,
     type: 3}
-  _powerDisappearAfterThisAmountOfTime: 10
-  _powerAppearAfterThisAmountOfTime: 5
+  _powerDisappearAfterThisAmountOfTime: 15
+  _powerAppearAfterThisAmountOfTime: 3
 --- !u!1 &9203450621309321445
 GameObject:
   m_ObjectHideFlags: 0

@@ -85,6 +85,12 @@ public class PlayerPowerBehaviour : MonoBehaviour
 
     private void UseShield()
     {
+        if (_shieldSpawner.GetComponent<SpawnCollision>().GetIsInCollision())
+        {
+            Debug.Log("You shall not place that here ! (shield)");
+            return;
+        }
+    
         AudioManager.instance.Play("ShieldDrop");
         int rand = Random.Range(0, 11);
         Shield _currentShield;

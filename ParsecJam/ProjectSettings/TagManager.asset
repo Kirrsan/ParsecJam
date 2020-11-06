@@ -9,6 +9,7 @@ TagManager:
   - Unshootable
   - Test
   - Shield
+  - Mine
   layers:
   - Default
   - TransparentFX

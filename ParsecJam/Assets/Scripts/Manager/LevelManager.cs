@@ -94,14 +94,13 @@ public class LevelManager : MonoBehaviour
 
     public void ClearBonusList()
     {
-
         foreach (Mine mine in mineList)
         {
             Destroy(mine.gameObject);
         }
         foreach (Shield shield in shieldList)
         {
-            Destroy(shield.gameObject);
+            Destroy(shield.transform.parent.gameObject);
         }
         mineList.Clear();
         shieldList.Clear();

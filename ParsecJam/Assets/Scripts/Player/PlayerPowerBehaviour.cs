@@ -75,7 +75,7 @@ public class PlayerPowerBehaviour : MonoBehaviour
         else
         {
             AudioManager.instance.Play("Mine");
-;            _currentMine.TriggerPower();
+;            _currentMine.TriggerPower(true);
             _currentMine = null;
             _mineSetUp = false;
             _currentPower = Power.None;
@@ -111,5 +111,12 @@ public class PlayerPowerBehaviour : MonoBehaviour
     public bool GetMineSetUp()
     {
         return _mineSetUp;
+    }
+
+    public void ResetPower()
+    {
+        _mineSetUp = false;
+        _currentPower = Power.None;
+        InterfaceManager.instance.ChangePowerIcon(_playerEntity.GetIndex(), _currentPower);
     }
 }

@@ -23,6 +23,7 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private float _dashCooldown = 3f;
     [SerializeField] private float _dashspeed = 20f;
     [SerializeField] private float _dashCountdown = -1f;
+    [SerializeField] private GameObject _dashFX;
     private bool _isDashing = false;
     private float _dashTimer;
 
@@ -233,7 +234,8 @@ public class TopDownEntity : MonoBehaviour
             }
             _dashCountdown = _dashDuration;
             _isDashing = true;
-
+            _anim.SetBool("Dash", true);
+            _dashFX.SetActive(true);
             _dashTimer = 0;
         }
     }
@@ -247,6 +249,9 @@ public class TopDownEntity : MonoBehaviour
 
         if (_dashCountdown <= 0f){
             _isDashing = false;
+            _anim.SetBool("Dash", false);
+            _dashFX.SetActive(false);
+
             if (_moveDir != Vector2.zero)
             {
                 _velocity = _velocity.normalized * _moveSpeedMax;

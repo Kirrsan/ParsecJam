@@ -202,10 +202,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 581289295, guid: a44a6807364a23a40ab5abb858574383, type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 244203229094324450, guid: a44a6807364a23a40ab5abb858574383,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -295,31 +291,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 4176883312581344789, guid: a44a6807364a23a40ab5abb858574383,
-        type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4259412791208247869, guid: a44a6807364a23a40ab5abb858574383,
-        type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4259412791642432390, guid: a44a6807364a23a40ab5abb858574383,
-        type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5335735157465021089, guid: a44a6807364a23a40ab5abb858574383,
-        type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7615182716387720101, guid: a44a6807364a23a40ab5abb858574383,
-        type: 3}
-      propertyPath: powerThatWillSpawnHere
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a44a6807364a23a40ab5abb858574383, type: 3}

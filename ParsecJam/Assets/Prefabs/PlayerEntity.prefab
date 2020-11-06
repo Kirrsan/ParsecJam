@@ -1260,6 +1260,8 @@ MonoBehaviour:
   _playerDeathTime: 30
   _isDead: 0
   _deathFX: {fileID: 4312995480267559141}
+  mixamoHips: {fileID: 8636096359554986870}
+  deathPoolFX: {fileID: 19893824, guid: 3de0e57e19daeed4ba1a2a3e1cf64986, type: 3}
   _lifeMax: 10
   _hitFX:
   - {fileID: 1730212457860566635}

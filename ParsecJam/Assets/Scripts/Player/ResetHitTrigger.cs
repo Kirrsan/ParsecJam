@@ -17,4 +17,9 @@ public class ResetHitTrigger : MonoBehaviour
     {
         _playerEntity.isBeingHit = false;
     }
+
+    public void InstantiateDeathFx()
+    {
+        _playerEntity.InstantiateDeathVFX();
+    }
 }

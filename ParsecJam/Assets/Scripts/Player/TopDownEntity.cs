@@ -33,7 +33,9 @@ public class TopDownEntity : MonoBehaviour
     [SerializeField] private float _playerDeathTime = 30f;
     [SerializeField] private bool _isDead = false;
     [SerializeField] private GameObject _deathFX;
-
+    [SerializeField] private Transform mixamoHips;
+    [SerializeField] private ParticleSystem deathPoolFX;
+    
     [Header("Life Settings")]
     [SerializeField] private float _lifeMax = 15;
     [SerializeField] private GameObject[] _hitFX;
@@ -61,6 +63,8 @@ public class TopDownEntity : MonoBehaviour
     private float _initialYPosition;
     private bool _yInitialized = false;
     public bool isBeingHit = false;
+
+
 
     
     private void Awake()
@@ -418,6 +422,18 @@ public class TopDownEntity : MonoBehaviour
         SpawnHead();
         LevelManager.instance.RespawnPlayers(LevelManager.instance.respawnTimeBulletKill);
         ScoreManager.instance.AddToScore(LevelManager.instance.GetOtherPlayer(_index));
+    }
+
+    public void InstantiateDeathVFX()
+    {
+        ParticleSystem Fx = Instantiate(deathPoolFX, new Vector3(mixamoHips.transform.position.x, 0.15f, mixamoHips.transform.position.z),deathPoolFX.transform.rotation);
+        StartCoroutine(DestroyDeathPoolFX(Fx));
+    }
+
+    private IEnumerator DestroyDeathPoolFX(ParticleSystem Fx)
+    {
+        yield return new WaitForSeconds(deathPoolFX.main.duration);
+        Destroy(Fx.gameObject);
     }
 
     public float GetLife()

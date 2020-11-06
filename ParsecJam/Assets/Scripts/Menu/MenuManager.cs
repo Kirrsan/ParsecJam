@@ -30,9 +30,19 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private EventSystem _eventSystem;
     private GameObject _lastSelectedGameObject;
 
+    [Header("Eye Settings")]
+    [SerializeField] private Vector3[] _eyePossiblePositions;
+    [SerializeField] private RectTransform _eyeTransform;
+    [SerializeField] private float _eyeSpeed = 2;
+    private bool _hasToChangeEyePosition = true;
+    private Vector3 _previousPosition;
+    private Vector3 _newPosition;
+    private float _eyePositionStep = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        _previousPosition = _eyePossiblePositions[0];
         GoToBasePanel();
     }
 
@@ -47,6 +57,17 @@ public class MenuManager : MonoBehaviour
                 AudioManager.instance.Play("UINavigation");
             }
             _lastSelectedGameObject = currentSelectedGameObject;
+        }
+
+        if (_hasToChangeEyePosition)
+        {
+            _eyePositionStep += Time.deltaTime * _eyeSpeed;
+            _eyeTransform.localPosition = Vector3.Lerp(_previousPosition, _newPosition, _eyePositionStep);
+            if(_eyeTransform.localPosition == _newPosition)
+            {
+                _hasToChangeEyePosition = false;
+                _eyePositionStep = 0;
+            }
         }
     }
 
@@ -80,6 +101,14 @@ public class MenuManager : MonoBehaviour
                 print("There is no such functin fool");
                 break;
         }
+    }
+
+    public void ChangeEyePosition(int posIndex)
+    {
+        _previousPosition = _eyeTransform.localPosition;
+        _newPosition = _eyePossiblePositions[posIndex];
+        _eyePositionStep = 0;
+        _hasToChangeEyePosition = true;
     }
 
 

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2860385878054031436}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,10 +46,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushPower: 10
+  pushPowerMiddleCircle: 8
   mineMaxRadius: 5
   middleCircleDistance: 4
   innerCircleDistance: 3
   _isMinePlaced: 0
+  _playerText: {fileID: 0}
+  _mine: {fileID: 0}
+  _mineFX: {fileID: 0}
+  _mineFXClouds: {fileID: 0}
 --- !u!33 &6160055281816384475
 MeshFilter:
   m_ObjectHideFlags: 0
